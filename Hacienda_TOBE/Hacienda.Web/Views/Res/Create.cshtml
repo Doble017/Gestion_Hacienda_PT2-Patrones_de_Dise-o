@@ -1,14 +1,38 @@
-@{ ViewData["Title"] = "Agregar res";
-   var potreros = ViewBag.Potreros as IReadOnlyList<Hacienda.Domain.Entities.Potrero>; }
-<h2>Agregar res</h2>
-<form method="post">
-  <div class="mb-2"><label>Potrero</label>
-    <select name="potreroId" class="form-select">
-    @if (potreros != null) { foreach (var p in potreros) { <option value="@p.Identificacion">@p.Identificacion (@p.Tipo)</option> } }
+@{
+  ViewData["Title"] = "Agregar res";
+  var potreros = ViewBag.Potreros as IReadOnlyList<Hacienda.Domain.Entities.Potrero>;
+}
+<h2 class="fw-bold mb-3">Nueva res</h2>
+<div class="aw-card p-4" style="max-width:520px">
+<form method="post" asp-action="Create">
+  @Html.AntiForgeryToken()
+  <div class="mb-3">
+    <label class="form-label">Potrero</label>
+    <select name="potreroId" class="form-select" required>
+      <option value="">— seleccionar —</option>
+      @if (potreros != null) {
+        foreach (var p in potreros) {
+          <option value="@p.Identificacion">@p.Identificacion (@p.Tipo) — @p.Reses.Count reses</option>
+        }
+      }
     </select>
+    <div class="form-text">El tipo de res se determina por el tipo del potrero.</div>
   </div>
-  <div class="mb-2"><label>Nombre</label><input name="nombre" class="form-control" required /></div>
-  <div class="mb-2"><label>Edad (meses)</label><input name="edad" type="number" class="form-control" required /></div>
-  <div class="mb-2"><label>Peso (kg)</label><input name="peso" type="number" class="form-control" required /></div>
-  <button class="btn btn-success">Guardar</button>
+  <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input name="nombre" class="form-control" required />
+  </div>
+  <div class="row">
+    <div class="col mb-3">
+      <label class="form-label">Edad (meses)</label>
+      <input name="edad" type="number" class="form-control" min="0" required />
+    </div>
+    <div class="col mb-3">
+      <label class="form-label">Peso (kg)</label>
+      <input name="peso" type="number" class="form-control" min="1" required />
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success">Guardar</button>
+  <a asp-action="Index" class="btn btn-link">Cancelar</a>
 </form>
+</div>

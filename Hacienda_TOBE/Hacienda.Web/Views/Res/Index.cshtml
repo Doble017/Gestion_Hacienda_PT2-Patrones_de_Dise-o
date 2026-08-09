@@ -1,14 +1,118 @@
 @model IReadOnlyList<(Hacienda.Domain.Entities.Potrero Potrero, Hacienda.Domain.Entities.Res Res)>
 @{ ViewData["Title"] = "Reses"; }
-<h2>Reses</h2>
-@if (TempData["Msg"] != null) { <div class="alert alert-success">@TempData["Msg"]</div> }
-@if (TempData["Err"] != null) { <div class="alert alert-danger">@TempData["Err"]</div> }
-<table class="table table-sm"><thead><tr><th>Potrero</th><th>Nombre</th><th>Tipo</th><th>Peso</th><th>Edad</th></tr></thead>
-<tbody>
-@foreach (var item in Model) {
-  var r = item.Res;
-  string tipo = r is Hacienda.Domain.Entities.Ternero ? "Ternero" : r is Hacienda.Domain.Entities.Cebon ? "Cebon" : "Novillo";
-<tr><td>@item.Potrero.Identificacion</td><td>@r.Nombre</td><td>@tipo</td><td>@r.Peso</td><td>@r.Edad</td></tr>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <h2 class="fw-bold mb-1">Reses</h2>
+    <span class="stat-pill">@ViewBag.TotalReses animales</span>
+    <span class="stat-pill ms-1">@ViewBag.TotalPeso kg total</span>
+  </div>
+  <a class="btn btn-success" asp-action="Create">
+    <span class="material-icons-outlined" style="font-size:1rem;vertical-align:middle">add</span> Nueva res
+  </a>
+</div>
+
+@if (Model.Count == 0) {
+  <div class="aw-card p-5 text-center text-muted">No hay reses registradas.</div>
+} else {
+<div class="table-responsive aw-card">
+<table class="table table-hover mb-0 align-middle">
+  <thead class="table-light">
+    <tr><th>Nombre</th><th>Potrero</th><th>Tipo</th><th>Peso</th><th>Edad</th><th>Vacunas</th><th>Acciones</th></tr>
+  </thead>
+  <tbody>
+  @foreach (var item in Model) {
+    var r = item.Res;
+    string tipo = r is Hacienda.Domain.Entities.Ternero ? "Ternero"
+                : r is Hacienda.Domain.Entities.Cebon ? "Cebón" : "Novillo";
+    <tr>
+      <td class="fw-semibold">@r.Nombre</td>
+      <td>
+        <a asp-controller="Potrero" asp-action="Details" asp-route-id="@item.Potrero.Identificacion">
+          @item.Potrero.Identificacion
+        </a>
+      </td>
+      <td><span class="badge bg-secondary">@tipo</span></td>
+      <td>@r.Peso kg</td>
+      <td>@r.Edad meses</td>
+      <td>@r.VacunasAplicadas.Count</td>
+      <td>
+        <div class="btn-group btn-group-sm">
+          <a class="btn btn-outline-primary"
+             asp-action="DetalleVacunas"
+             asp-route-potreroId="@item.Potrero.Identificacion"
+             asp-route-nombre="@r.Nombre">Vacunas</a>
+          <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                  data-bs-target="#alimentarModal"
+                  data-potrero="@item.Potrero.Identificacion"
+                  data-nombre="@r.Nombre">Alimentar</button>
+          <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+                  data-bs-target="#venderModal"
+                  data-potrero="@item.Potrero.Identificacion"
+                  data-nombre="@r.Nombre">Vender</button>
+        </div>
+      </td>
+    </tr>
+  }
+  </tbody>
+</table>
+</div>
 }
-</tbody></table>
-<a asp-action="Create" class="btn btn-primary">Agregar res</a>
+
+<!-- Modal Alimentar -->
+<div class="modal fade" id="alimentarModal" tabindex="-1">
+  <div class="modal-dialog"><div class="modal-content">
+    <form method="post" asp-action="Alimentar">
+      @Html.AntiForgeryToken()
+      <div class="modal-header"><h5 class="modal-title">Alimentar res</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <input type="hidden" name="potreroId" id="alimPotrero" />
+        <input type="hidden" name="nombre" id="alimNombre" />
+        <p>Res: <strong id="alimLabel"></strong></p>
+        <label class="form-label">Incremento de peso (kg)</label>
+        <input type="number" name="incremento" class="form-control" value="10" min="1" required />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-success">Alimentar</button>
+      </div>
+    </form>
+  </div></div>
+</div>
+
+<!-- Modal Vender -->
+<div class="modal fade" id="venderModal" tabindex="-1">
+  <div class="modal-dialog"><div class="modal-content">
+    <form method="post" asp-action="Vender">
+      @Html.AntiForgeryToken()
+      <div class="modal-header"><h5 class="modal-title">Vender res</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <input type="hidden" name="potreroId" id="venPotrero" />
+        <input type="hidden" name="nombre" id="venNombre" />
+        <p>Res: <strong id="venLabel"></strong></p>
+        <label class="form-label">Monto de venta</label>
+        <input type="number" name="monto" class="form-control" step="1000" min="1" required />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-warning">Confirmar venta</button>
+      </div>
+    </form>
+  </div></div>
+</div>
+
+@section Scripts {
+<script>
+document.getElementById('alimentarModal')?.addEventListener('show.bs.modal', e => {
+  const b = e.relatedTarget;
+  document.getElementById('alimPotrero').value = b.dataset.potrero;
+  document.getElementById('alimNombre').value = b.dataset.nombre;
+  document.getElementById('alimLabel').textContent = b.dataset.nombre + ' (' + b.dataset.potrero + ')';
+});
+document.getElementById('venderModal')?.addEventListener('show.bs.modal', e => {
+  const b = e.relatedTarget;
+  document.getElementById('venPotrero').value = b.dataset.potrero;
+  document.getElementById('venNombre').value = b.dataset.nombre;
+  document.getElementById('venLabel').textContent = b.dataset.nombre + ' (' + b.dataset.potrero + ')';
+});
+</script>
+}

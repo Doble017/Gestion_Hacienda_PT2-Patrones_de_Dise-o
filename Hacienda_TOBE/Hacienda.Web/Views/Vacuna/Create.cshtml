@@ -1,0 +1,43 @@
+@{ ViewData["Title"] = "Registrar vacuna"; }
+<h2 class="fw-bold mb-3">Registrar vacuna</h2>
+<div class="aw-card p-4" style="max-width:560px">
+<form method="post" asp-action="Create">
+  @Html.AntiForgeryToken()
+  <div class="mb-3">
+    <label class="form-label">Tipo</label>
+    <select name="tipo" id="tipoVac" class="form-select" onchange="toggleTipo()">
+      <option value="Bacteriana">Bacteriana</option>
+      <option value="Viva">Viva</option>
+    </select>
+  </div>
+  <div class="mb-3"><label class="form-label">Nombre</label><input name="nombre" class="form-control" required /></div>
+  <div class="mb-3"><label class="form-label">Lote</label><input name="lote" class="form-control" required /></div>
+  <div class="row">
+    <div class="col mb-3"><label class="form-label">Fecha aplicación</label><input type="date" name="fechaAplicacion" class="form-control" required value="@DateTime.Today.ToString("yyyy-MM-dd")" /></div>
+    <div class="col mb-3"><label class="form-label">Fecha vencimiento</label><input type="date" name="fechaVencimiento" class="form-control" required /></div>
+  </div>
+  <div class="mb-3" id="periodoBox">
+    <label class="form-label">Periodo de aplicación (meses)</label>
+    <input type="number" name="periodo" class="form-control" value="3" min="1" />
+  </div>
+  <div class="mb-3 d-none" id="gradoBox">
+    <label class="form-label">Grado de atenuación</label>
+    <select name="grado" class="form-select">
+      <option value="0">Baja</option>
+      <option value="1" selected>Media</option>
+      <option value="2">Alta</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">Guardar</button>
+  <a asp-action="Index" class="btn btn-link">Cancelar</a>
+</form>
+</div>
+@section Scripts {
+<script>
+function toggleTipo(){
+  const t=document.getElementById('tipoVac').value;
+  document.getElementById('periodoBox').classList.toggle('d-none', t!=='Bacteriana');
+  document.getElementById('gradoBox').classList.toggle('d-none', t!=='Viva');
+}
+</script>
+}

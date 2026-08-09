@@ -1,12 +1,34 @@
 @model IReadOnlyList<Hacienda.Domain.Entities.Vacuna>
 @{ ViewData["Title"] = "Vacunas"; }
-<h2>Vacunas disponibles</h2>
-@if (TempData["Msg"] != null) { <div class="alert alert-success">@TempData["Msg"]</div> }
-@if (TempData["Err"] != null) { <div class="alert alert-danger">@TempData["Err"]</div> }
-<table class="table table-sm"><thead><tr><th>Nombre</th><th>Lote</th><th>Vence</th><th>Tipo</th></tr></thead>
-<tbody>
-@foreach (var v in Model) {
-  string tipo = v is Hacienda.Domain.Entities.Bacteriana ? "Bacteriana" : "Viva";
-<tr><td>@v.Nombre</td><td>@v.Lote</td><td>@v.FechaVencimiento.ToString("yyyy-MM-dd")</td><td>@tipo</td></tr>
-}
-</tbody></table>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="fw-bold mb-0">Inventario de vacunas</h2>
+  <div>
+    <a class="btn btn-outline-primary" asp-action="Aplicar">Aplicar vacuna</a>
+    <a class="btn btn-success" asp-action="Create">Registrar vacuna</a>
+  </div>
+</div>
+<div class="aw-card table-responsive">
+<table class="table table-hover mb-0 align-middle">
+  <thead class="table-light"><tr><th>Nombre</th><th>Lote</th><th>Tipo</th><th>Aplicación</th><th>Vencimiento</th><th>Estado</th></tr></thead>
+  <tbody>
+  @foreach (var v in Model) {
+    string tipo = v is Hacienda.Domain.Entities.Bacteriana ? "Bacteriana" : "Viva";
+    bool vencida = v.EstaVencida(DateTime.Today);
+    <tr>
+      <td class="fw-semibold">@v.Nombre</td>
+      <td>@v.Lote</td>
+      <td>@tipo</td>
+      <td>@v.FechaAplicacion.ToString("yyyy-MM-dd")</td>
+      <td>@v.FechaVencimiento.ToString("yyyy-MM-dd")</td>
+      <td>
+        @if (vencida) { <span class="badge bg-danger">Vencida</span> }
+        else { <span class="badge bg-success">Disponible</span> }
+      </td>
+    </tr>
+  }
+  @if (!Model.Any()) {
+    <tr><td colspan="6" class="text-center text-muted py-4">Sin vacunas en inventario</td></tr>
+  }
+  </tbody>
+</table>
+</div>

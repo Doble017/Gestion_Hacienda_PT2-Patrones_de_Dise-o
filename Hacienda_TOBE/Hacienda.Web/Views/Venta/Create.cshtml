@@ -1,0 +1,40 @@
+@{
+  ViewData["Title"] = "Registrar venta";
+  var reses = ViewBag.Reses as IReadOnlyList<(Hacienda.Domain.Entities.Potrero Potrero, Hacienda.Domain.Entities.Res Res)>;
+}
+<h2 class="fw-bold mb-3">Registrar venta de res</h2>
+<div class="aw-card p-4" style="max-width:520px">
+<form method="post" asp-action="Create">
+  @Html.AntiForgeryToken()
+  <div class="mb-3">
+    <label class="form-label">Res a vender</label>
+    <select name="sel" id="selRes" class="form-select" required onchange="fillHidden()">
+      <option value="">— seleccionar —</option>
+      @if (reses != null) {
+        foreach (var item in reses) {
+          <option value="@item.Potrero.Identificacion|@item.Res.Nombre">
+            @item.Res.Nombre (@item.Potrero.Identificacion) — @item.Res.Peso kg
+          </option>
+        }
+      }
+    </select>
+    <input type="hidden" name="potreroId" id="potreroId" />
+    <input type="hidden" name="nombreRes" id="nombreRes" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Monto</label>
+    <input type="number" name="monto" class="form-control" step="1000" min="1" required />
+  </div>
+  <button type="submit" class="btn btn-warning">Confirmar venta</button>
+  <a asp-action="Index" class="btn btn-link">Cancelar</a>
+</form>
+</div>
+@section Scripts {
+<script>
+function fillHidden(){
+  const v = document.getElementById('selRes').value.split('|');
+  document.getElementById('potreroId').value = v[0] || '';
+  document.getElementById('nombreRes').value = v[1] || '';
+}
+</script>
+}

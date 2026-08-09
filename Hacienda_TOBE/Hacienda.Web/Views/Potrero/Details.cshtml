@@ -1,10 +1,36 @@
 @model Hacienda.Domain.Entities.Potrero
 @{ ViewData["Title"] = Model.Identificacion; }
-<h2>Potrero @Model.Identificacion (@Model.Tipo)</h2>
-<table class="table"><thead><tr><th>Nombre</th><th>Peso</th><th>Edad</th><th>Vacunas</th></tr></thead>
-<tbody>
-@foreach (var r in Model.Reses) {
-<tr><td>@r.Nombre</td><td>@r.Peso</td><td>@r.Edad</td><td>@r.VacunasAplicadas.Count</td></tr>
-}
-</tbody></table>
-<a asp-action="Index">Volver</a>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <h2 class="fw-bold mb-0">@Model.Identificacion</h2>
+    <span class="badge bg-secondary">@Model.Tipo</span>
+    <span class="stat-pill ms-2">@Model.Reses.Count reses</span>
+  </div>
+  <a asp-action="Index" class="btn btn-outline-secondary">Volver</a>
+</div>
+<div class="aw-card table-responsive">
+<table class="table mb-0 align-middle">
+  <thead class="table-light"><tr><th>Nombre</th><th>Peso (kg)</th><th>Edad (meses)</th><th>Vacunas</th><th></th></tr></thead>
+  <tbody>
+  @foreach (var r in Model.Reses) {
+    <tr>
+      <td class="fw-semibold">@r.Nombre</td>
+      <td>@r.Peso</td>
+      <td>@r.Edad</td>
+      <td>@r.VacunasAplicadas.Count</td>
+      <td>
+        <a class="btn btn-sm btn-outline-primary"
+           asp-controller="Res" asp-action="DetalleVacunas"
+           asp-route-potreroId="@Model.Identificacion" asp-route-nombre="@r.Nombre">Vacunas</a>
+      </td>
+    </tr>
+  }
+  @if (!Model.Reses.Any()) {
+    <tr><td colspan="5" class="text-center text-muted py-4">Sin reses en este potrero</td></tr>
+  }
+  </tbody>
+</table>
+</div>
+<div class="mt-3">
+  <a class="btn btn-success" asp-controller="Res" asp-action="Create">Agregar res</a>
+</div>

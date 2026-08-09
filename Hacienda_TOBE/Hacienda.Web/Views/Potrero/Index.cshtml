@@ -1,17 +1,40 @@
 @model IReadOnlyList<Hacienda.Domain.Entities.Potrero>
 @{ ViewData["Title"] = "Potreros"; }
-<h2>Potreros</h2>
-@if (TempData["Msg"] != null) { <div class="alert alert-success">@TempData["Msg"]</div> }
-@if (TempData["Err"] != null) { <div class="alert alert-danger">@TempData["Err"]</div> }
-<table class="table table-sm"><thead><tr><th>Id</th><th>Tipo</th><th>Reses</th><th></th></tr></thead>
-<tbody>
-@foreach (var p in Model) {
-<tr><td>@p.Identificacion</td><td>@p.Tipo</td><td>@p.Reses.Count</td>
-<td><a asp-action="Details" asp-route-id="@p.Identificacion">Detalle</a></td></tr>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <h2 class="fw-bold mb-1">Potreros</h2>
+    <span class="stat-pill">@ViewBag.TotalPotreros potreros</span>
+    <span class="stat-pill ms-1">@ViewBag.TotalReses reses</span>
+  </div>
+  <a class="btn btn-success" asp-action="Create">
+    <span class="material-icons-outlined" style="font-size:1rem;vertical-align:middle">add</span> Nuevo potrero
+  </a>
+</div>
+
+@if (Model.Count == 0) {
+  <div class="aw-card p-5 text-center text-muted">No hay potreros registrados. Crea el primero.</div>
+} else {
+<div class="table-responsive aw-card">
+<table class="table table-hover mb-0 align-middle">
+  <thead class="table-light"><tr>
+    <th>Identificación</th><th>Tipo</th><th>Reses</th><th>Ocupación</th><th></th>
+  </tr></thead>
+  <tbody>
+  @foreach (var p in Model) {
+    var pct = Math.Min(100, p.Reses.Count * 100 / 150);
+    <tr>
+      <td class="fw-semibold">@p.Identificacion</td>
+      <td><span class="badge bg-secondary">@p.Tipo</span></td>
+      <td>@p.Reses.Count / 150</td>
+      <td style="min-width:120px">
+        <div class="progress" style="height:8px"><div class="progress-bar bg-success" style="width:@pct%"></div></div>
+      </td>
+      <td class="text-end">
+        <a class="btn btn-sm btn-outline-success" asp-action="Details" asp-route-id="@p.Identificacion">Ver detalle</a>
+      </td>
+    </tr>
+  }
+  </tbody>
+</table>
+</div>
 }
-</tbody></table>
-<form method="post" asp-action="Create" class="row g-2">
-  <div class="col-auto"><input name="identificacion" class="form-control" placeholder="Identificación" required /></div>
-  <div class="col-auto"><select name="tipo" class="form-select"><option>Ternero</option><option>Cebon</option><option>Novillo</option></select></div>
-  <div class="col-auto"><button class="btn btn-primary">Crear</button></div>
-</form>

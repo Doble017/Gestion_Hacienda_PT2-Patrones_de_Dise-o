@@ -1,0 +1,62 @@
+@{
+  ViewData["Title"] = "Aplicar vacuna";
+  var potreros = ViewBag.Potreros as IReadOnlyList<Hacienda.Domain.Entities.Potrero>;
+  var vacunas = ViewBag.Vacunas as IReadOnlyList<Hacienda.Domain.Entities.Vacuna>;
+  var reses = ViewBag.Reses as IReadOnlyList<(Hacienda.Domain.Entities.Potrero Potrero, Hacienda.Domain.Entities.Res Res)>;
+}
+<h2 class="fw-bold mb-3">Aplicar vacuna a una res</h2>
+<div class="aw-card p-4" style="max-width:560px">
+<form method="post" asp-action="Aplicar">
+  @Html.AntiForgeryToken()
+  <div class="mb-3">
+    <label class="form-label">Potrero</label>
+    <select name="potreroId" id="selPotrero" class="form-select" required onchange="filterReses()">
+      <option value="">— seleccionar —</option>
+      @if (potreros != null) { foreach (var p in potreros) { <option value="@p.Identificacion">@p.Identificacion</option> } }
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Res</label>
+    <select name="nombreRes" id="selRes" class="form-select" required>
+      <option value="">— seleccionar potrero primero —</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Vacuna (lote)</label>
+    <select name="lote" class="form-select" required>
+      <option value="">— seleccionar —</option>
+      @if (vacunas != null) {
+        foreach (var v in vacunas) {
+          if (!v.EstaVencida(DateTime.Today)) {
+            string tipo = v is Hacienda.Domain.Entities.Bacteriana ? "Bac" : "Viva";
+            <option value="@v.Lote">@v.Nombre · @v.Lote (@tipo)</option>
+          }
+        }
+      }
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Aplicar</button>
+  <a asp-action="Index" class="btn btn-link">Cancelar</a>
+</form>
+</div>
+@section Scripts {
+<script>
+const reses = [
+@if (reses != null) {
+  foreach (var item in reses) {
+    @: { pot: "@item.Potrero.Identificacion", nom: "@item.Res.Nombre" },
+  }
+}
+];
+function filterReses(){
+  const pot = document.getElementById('selPotrero').value;
+  const sel = document.getElementById('selRes');
+  sel.innerHTML = '<option value="">— seleccionar —</option>';
+  reses.filter(r => r.pot === pot).forEach(r => {
+    const o = document.createElement('option');
+    o.value = r.nom; o.textContent = r.nom;
+    sel.appendChild(o);
+  });
+}
+</script>
+}

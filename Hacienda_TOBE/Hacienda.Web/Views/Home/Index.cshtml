@@ -1,9 +1,52 @@
 @{ ViewData["Title"] = "Inicio"; }
-<h1>Sistema Hacienda — TO-BE</h1>
-<p>Arquitectura por capas con SOLID aplicado (ver README).</p>
-<ul>
-  <li><a asp-controller="Potrero" asp-action="Index">Potreros</a></li>
-  <li><a asp-controller="Res" asp-action="Index">Reses</a></li>
-  <li><a asp-controller="Vacuna" asp-action="Index">Vacunas</a></li>
-  <li><a asp-controller="Venta" asp-action="Index">Ventas</a></li>
-</ul>
+<div class="mb-4">
+  <h1 class="fw-bold" style="color:var(--aw-green)">Sistema de Gestión de Hacienda</h1>
+  <p class="text-muted">Versión TO-BE con arquitectura SOLID. Mismas capacidades operativas, mejor diseño interno.</p>
+</div>
+<div class="row g-4">
+  <div class="col-md-6 col-lg-4">
+    <a asp-controller="Potrero" asp-action="Index" class="text-decoration-none">
+      <div class="aw-card h-100 p-4 text-center">
+        <span class="material-icons-outlined" style="font-size:2.5rem;color:var(--aw-green)">fence</span>
+        <h3 class="h5 fw-bold mt-2">Potreros</h3>
+        <p class="text-muted small mb-0">Ver, crear y detalle de potreros y su ocupación</p>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-6 col-lg-4">
+    <a asp-controller="Res" asp-action="Index" class="text-decoration-none">
+      <div class="aw-card h-100 p-4 text-center">
+        <span class="material-icons-outlined" style="font-size:2.5rem;color:var(--aw-brown)">pets</span>
+        <h3 class="h5 fw-bold mt-2">Reses</h3>
+        <p class="text-muted small mb-0">Listado, alta, alimentación, venta y vacunas aplicadas</p>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-6 col-lg-4">
+    <a asp-controller="Vacuna" asp-action="Index" class="text-decoration-none">
+      <div class="aw-card h-100 p-4 text-center">
+        <span class="material-icons-outlined" style="font-size:2.5rem;color:#1976d2">vaccines</span>
+        <h3 class="h5 fw-bold mt-2">Vacunas</h3>
+        <p class="text-muted small mb-0">Inventario, registro y aplicación a reses</p>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-6 col-lg-4">
+    <a asp-controller="Venta" asp-action="Index" class="text-decoration-none">
+      <div class="aw-card h-100 p-4 text-center">
+        <span class="material-icons-outlined" style="font-size:2.5rem;color:var(--aw-green)">paid</span>
+        <h3 class="h5 fw-bold mt-2">Ventas</h3>
+        <p class="text-muted small mb-0">Historial de ventas y registro de nuevas ventas</p>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-6 col-lg-4">
+    <a asp-controller="Usuario" asp-action="Index" class="text-decoration-none">
+      <div class="aw-card h-100 p-4 text-center">
+        <span class="material-icons-outlined" style="font-size:2.5rem;color:#6a1b9a">group</span>
+        <h3 class="h5 fw-bold mt-2">Usuarios</h3>
+        <p class="text-muted small mb-0">Gestión de usuarios del sistema</p>
+      </div>
+    </a>
+  </div>
+</div>
