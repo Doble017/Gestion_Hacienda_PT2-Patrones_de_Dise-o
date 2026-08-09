@@ -1,0 +1,10 @@
+@model Hacienda.Domain.Entities.Potrero
+@{ ViewData["Title"] = Model.Identificacion; }
+<h2>Potrero @Model.Identificacion (@Model.Tipo)</h2>
+<table class="table"><thead><tr><th>Nombre</th><th>Peso</th><th>Edad</th><th>Vacunas</th></tr></thead>
+<tbody>
+@foreach (var r in Model.Reses) {
+<tr><td>@r.Nombre</td><td>@r.Peso</td><td>@r.Edad</td><td>@r.VacunasAplicadas.Count</td></tr>
+}
+</tbody></table>
+<a asp-action="Index">Volver</a>

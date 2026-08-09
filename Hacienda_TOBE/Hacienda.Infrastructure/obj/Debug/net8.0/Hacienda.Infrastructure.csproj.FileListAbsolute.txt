@@ -1,0 +1,17 @@
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\bin\Debug\net8.0\Hacienda.Infrastructure.deps.json
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\bin\Debug\net8.0\Hacienda.Infrastructure.dll
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\bin\Debug\net8.0\Hacienda.Infrastructure.pdb
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\bin\Debug\net8.0\Hacienda.Application.dll
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\bin\Debug\net8.0\Hacienda.Domain.dll
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\bin\Debug\net8.0\Hacienda.Domain.pdb
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\bin\Debug\net8.0\Hacienda.Application.pdb
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\obj\Debug\net8.0\Hacienda.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\obj\Debug\net8.0\Hacienda.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\obj\Debug\net8.0\Hacienda.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\obj\Debug\net8.0\Hacienda.Infrastructure.AssemblyInfo.cs
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\obj\Debug\net8.0\Hacienda.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\obj\Debug\net8.0\Hacienda.1C672997.Up2Date
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\obj\Debug\net8.0\Hacienda.Infrastructure.dll
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\obj\Debug\net8.0\refint\Hacienda.Infrastructure.dll
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\obj\Debug\net8.0\Hacienda.Infrastructure.pdb
+C:\Users\hiler\Desktop\777\Hacienda_TOBE\Hacienda.Infrastructure\obj\Debug\net8.0\ref\Hacienda.Infrastructure.dll

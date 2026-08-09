@@ -1,0 +1,14 @@
+@{ ViewData["Title"] = "Agregar res";
+   var potreros = ViewBag.Potreros as IReadOnlyList<Hacienda.Domain.Entities.Potrero>; }
+<h2>Agregar res</h2>
+<form method="post">
+  <div class="mb-2"><label>Potrero</label>
+    <select name="potreroId" class="form-select">
+    @if (potreros != null) { foreach (var p in potreros) { <option value="@p.Identificacion">@p.Identificacion (@p.Tipo)</option> } }
+    </select>
+  </div>
+  <div class="mb-2"><label>Nombre</label><input name="nombre" class="form-control" required /></div>
+  <div class="mb-2"><label>Edad (meses)</label><input name="edad" type="number" class="form-control" required /></div>
+  <div class="mb-2"><label>Peso (kg)</label><input name="peso" type="number" class="form-control" required /></div>
+  <button class="btn btn-success">Guardar</button>
+</form>

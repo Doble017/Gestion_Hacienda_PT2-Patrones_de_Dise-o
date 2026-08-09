@@ -1,0 +1,12 @@
+@model IReadOnlyList<Hacienda.Domain.Entities.Vacuna>
+@{ ViewData["Title"] = "Vacunas"; }
+<h2>Vacunas disponibles</h2>
+@if (TempData["Msg"] != null) { <div class="alert alert-success">@TempData["Msg"]</div> }
+@if (TempData["Err"] != null) { <div class="alert alert-danger">@TempData["Err"]</div> }
+<table class="table table-sm"><thead><tr><th>Nombre</th><th>Lote</th><th>Vence</th><th>Tipo</th></tr></thead>
+<tbody>
+@foreach (var v in Model) {
+  string tipo = v is Hacienda.Domain.Entities.Bacteriana ? "Bacteriana" : "Viva";
+<tr><td>@v.Nombre</td><td>@v.Lote</td><td>@v.FechaVencimiento.ToString("yyyy-MM-dd")</td><td>@tipo</td></tr>
+}
+</tbody></table>

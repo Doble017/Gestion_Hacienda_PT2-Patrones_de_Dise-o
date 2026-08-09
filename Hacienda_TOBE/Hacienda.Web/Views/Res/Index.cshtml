@@ -1,0 +1,14 @@
+@model IReadOnlyList<(Hacienda.Domain.Entities.Potrero Potrero, Hacienda.Domain.Entities.Res Res)>
+@{ ViewData["Title"] = "Reses"; }
+<h2>Reses</h2>
+@if (TempData["Msg"] != null) { <div class="alert alert-success">@TempData["Msg"]</div> }
+@if (TempData["Err"] != null) { <div class="alert alert-danger">@TempData["Err"]</div> }
+<table class="table table-sm"><thead><tr><th>Potrero</th><th>Nombre</th><th>Tipo</th><th>Peso</th><th>Edad</th></tr></thead>
+<tbody>
+@foreach (var item in Model) {
+  var r = item.Res;
+  string tipo = r is Hacienda.Domain.Entities.Ternero ? "Ternero" : r is Hacienda.Domain.Entities.Cebon ? "Cebon" : "Novillo";
+<tr><td>@item.Potrero.Identificacion</td><td>@r.Nombre</td><td>@tipo</td><td>@r.Peso</td><td>@r.Edad</td></tr>
+}
+</tbody></table>
+<a asp-action="Create" class="btn btn-primary">Agregar res</a>

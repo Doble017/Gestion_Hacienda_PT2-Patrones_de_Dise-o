@@ -1,0 +1,194 @@
+<mxfile host="app.diagrams.net" modified="2026-08-08T10:00:00.000Z" agent="Grok" version="22.1.0" type="device">
+  <diagram id="as-is-mvc" name="AS-IS Capa MVC y Servicios">
+    <mxGraphModel dx="1500" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="UML AS-IS — Capa MVC, Servicios y Composition Root&#xa;p_mvcHacienda (.NET 8) → depende de Bib_Hacienda" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="300" y="15" width="900" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- CONTROLLERS -->
+        <mxCell id="pkg_ctr" value="Controllers (ASP.NET Core MVC)" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1520" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="HomeC" value="HomeController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="pkg_ctr">
+          <mxGeometry x="15" y="45" width="140" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="hc" value="- _logger&#xa;+ Index()&#xa;+ Privacy()&#xa;+ Error()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="HomeC">
+          <mxGeometry y="24" width="140" height="106" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="AccC" value="AccountController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="pkg_ctr">
+          <mxGeometry x="170" y="45" width="160" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="ac" value="- _usuarioService&#xa;+ Login(GET/POST)&#xa;+ Logout()&#xa;+ AccessDenied()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="AccC">
+          <mxGeometry y="24" width="160" height="106" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="PotC" value="PotreroController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="pkg_ctr">
+          <mxGeometry x="350" y="45" width="180" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="pc" value="- _potreroService&#xa;- _hacienda&#xa;- _persistencia&#xa;+ Index / Create / Details" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="PotC">
+          <mxGeometry y="24" width="180" height="106" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ResC" value="ResController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="pkg_ctr">
+          <mxGeometry x="550" y="45" width="190" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="rc" value="- _resService&#xa;- _potreroService&#xa;- _hacienda / _persistencia&#xa;+ Index / Create&#xa;+ Alimentar / Vender&#xa;+ DetalleVacunas" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="ResC">
+          <mxGeometry y="24" width="190" height="106" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="VacC" value="VacunaController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="pkg_ctr">
+          <mxGeometry x="760" y="45" width="190" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="vc" value="- _vacunaService&#xa;- _resService&#xa;- _potreroService&#xa;+ Index / Create&#xa;+ Aplicar" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="VacC">
+          <mxGeometry y="24" width="190" height="106" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="VenC" value="VentaController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="pkg_ctr">
+          <mxGeometry x="970" y="45" width="160" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="venc" value="- _ventaService&#xa;+ Index / Details&#xa;+ Create / Edit&#xa;+ Delete" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="VenC">
+          <mxGeometry y="24" width="160" height="106" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="UsuC" value="UsuarioController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="pkg_ctr">
+          <mxGeometry x="1150" y="45" width="160" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc" value="- _usuarioService&#xa;+ Index()&#xa;+ Create()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="UsuC">
+          <mxGeometry y="24" width="160" height="106" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="nota_ctr" value="Todos heredan de&#xa;Controller (ASP.NET)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;fontStyle=2;" vertex="1" parent="pkg_ctr">
+          <mxGeometry x="1330" y="50" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- SERVICES -->
+        <mxCell id="pkg_ser" value="Servicios (lógica de aplicación)" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="1200" height="280" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="PersS" value="PersistenciaService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="pkg_ser">
+          <mxGeometry x="20" y="45" width="260" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="ps" value="- _directorioArchivos&#xa;- _httpContextAccessor&#xa;- _interceptorValidacion&#xa;- proxies Validador* (lazy)&#xa;───────────────&#xa;+ Guardar/Cargar Potreros&#xa;+ Guardar/Cargar Reses&#xa;+ Guardar/Cargar Vacunas&#xa;+ Guardar/Cargar Ventas&#xa;+ Guardar/Cargar Usuarios&#xa;+ Guardar/Cargar VacunasAplicadas&#xa;+ InicializarProxies()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="PersS">
+          <mxGeometry y="24" width="260" height="186" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="PotS" value="PotreroService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="pkg_ser">
+          <mxGeometry x="300" y="45" width="200" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="pots" value="- _hacienda : Hacienda&#xa;- _persistencia&#xa;+ CrearPotrero(...)&#xa;+ ObtenerTodosLosPotreros()&#xa;+ ObtenerPotreroPorId(...)&#xa;+ AgregarRes(...)&#xa;+ ObtenerEstadisticas()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="PotS">
+          <mxGeometry y="24" width="200" height="136" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ResS" value="ResService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="pkg_ser">
+          <mxGeometry x="520" y="45" width="200" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="ress" value="- _hacienda : Hacienda&#xa;- _persistencia&#xa;+ ObtenerTodasLasReses()&#xa;+ BuscarRes(...)&#xa;+ ObtenerEstadisticas()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="ResS">
+          <mxGeometry y="24" width="200" height="116" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="VacS" value="VacunaService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="pkg_ser">
+          <mxGeometry x="740" y="45" width="220" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="vacs" value="- _hacienda : Hacienda&#xa;- _persistencia&#xa;+ CrearVacuna(...)&#xa;+ AplicarVacuna(...)&#xa;+ ObtenerVacunasDisponibles()&#xa;+ ObtenerVacunasAplicadas(...)&#xa;+ ObtenerEstadisticas()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="VacS">
+          <mxGeometry y="24" width="220" height="136" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="VenS" value="VentaService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="pkg_ser">
+          <mxGeometry x="980" y="45" width="200" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="vens" value="- _hacienda : Hacienda&#xa;- _persistencia&#xa;+ ObtenerTodasLasVentas()&#xa;+ ObtenerVentasPorPotrero&#xa;+ ObtenerVentasPorFechas&#xa;+ ObtenerEstadisticas()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="VenS">
+          <mxGeometry y="24" width="200" height="126" as="geometry"/>
+        </mxCell>
+
+        <!-- UsuarioService outside package box slightly -->
+        <mxCell id="UsuS" value="UsuarioService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=24;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="350" width="220" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="usus" value="- _usuarios : List&lt;Usuario&gt;&#xa;- _persistencia&#xa;+ CargarUsuarios()&#xa;+ CrearUsuario(...)&#xa;+ AutenticarUsuario(...)&#xa;+ ValidateUserAsync(...)&#xa;+ ObtenerTodosLosUsuarios()&#xa;+ BuscarUsuario(...)&#xa;+ ObtenerEstadisticas()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="UsuS">
+          <mxGeometry y="24" width="220" height="156" as="geometry"/>
+        </mxCell>
+
+        <!-- Dependencias Controller -> Service (simplified arrows) -->
+        <mxCell id="d1" style="endArrow=open;endFill=0;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="AccC" target="UsuS">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="d2" style="endArrow=open;endFill=0;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="PotC" target="PotS">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="d3" style="endArrow=open;endFill=0;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ResC" target="ResS">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="d4" style="endArrow=open;endFill=0;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="VacC" target="VacS">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="d5" style="endArrow=open;endFill=0;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="VenC" target="VenS">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="d6" style="endArrow=open;endFill=0;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="UsuC" target="UsuS">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Services depend on Persistencia + Hacienda -->
+        <mxCell id="DomH" value="«dominio»&#xa;Hacienda&#xa;(Bib_Hacienda)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="640" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="dh1" style="endArrow=open;endFill=0;html=1;" edge="1" parent="1" source="PotS" target="DomH">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dh2" style="endArrow=open;endFill=0;html=1;" edge="1" parent="1" source="ResS" target="DomH">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dh3" style="endArrow=open;endFill=0;html=1;" edge="1" parent="1" source="VacS" target="DomH">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dh4" style="endArrow=open;endFill=0;html=1;" edge="1" parent="1" source="VenS" target="DomH">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="dp1" style="endArrow=open;endFill=0;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="PotS" target="PersS">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dp2" style="endArrow=open;endFill=0;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ResS" target="PersS">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dp3" style="endArrow=open;endFill=0;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="VacS" target="PersS">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dp4" style="endArrow=open;endFill=0;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="VenS" target="PersS">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dp5" style="endArrow=open;endFill=0;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="UsuS" target="PersS">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Composition root -->
+        <mxCell id="Prog" value="Program.cs — Composition Root" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="640" width="420" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="prog_b" value="AddSingleton&lt;PersistenciaService&gt;()&#xa;AddSingleton&lt;Hacienda&gt;()&#xa;AddSingleton&lt;PotreroService&gt;()&#xa;AddSingleton&lt;ResService&gt;()&#xa;AddSingleton&lt;VacunaService&gt;()&#xa;AddSingleton&lt;VentaService&gt;()&#xa;AddSingleton&lt;UsuarioService&gt;(...)&#xa;CookieAuth · default route Account/Login" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;fontFamily=Courier New;" vertex="1" parent="Prog">
+          <mxGeometry y="26" width="420" height="134" as="geometry"/>
+        </mxCell>
+
+        <!-- Persistencia datos -->
+        <mxCell id="Datos" value="Datos/*.txt&#xa;(Potreros, Reses, Vacunas,&#xa;Ventas, Usuarios, VacunasAplicadas)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="640" width="200" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="dd" style="endArrow=open;endFill=0;html=1;dashed=1;" edge="1" parent="1" source="PersS" target="Datos">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ley" value="Líneas punteadas = dependencia (inyección / uso)&#xa;Todos los servicios (excepto UsuarioService) dependen de Hacienda concreta&#xa;PersistenciaService es el único punto de I/O a archivos" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="980" y="640" width="380" height="90" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

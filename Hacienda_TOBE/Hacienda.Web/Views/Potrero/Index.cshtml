@@ -1,0 +1,17 @@
+@model IReadOnlyList<Hacienda.Domain.Entities.Potrero>
+@{ ViewData["Title"] = "Potreros"; }
+<h2>Potreros</h2>
+@if (TempData["Msg"] != null) { <div class="alert alert-success">@TempData["Msg"]</div> }
+@if (TempData["Err"] != null) { <div class="alert alert-danger">@TempData["Err"]</div> }
+<table class="table table-sm"><thead><tr><th>Id</th><th>Tipo</th><th>Reses</th><th></th></tr></thead>
+<tbody>
+@foreach (var p in Model) {
+<tr><td>@p.Identificacion</td><td>@p.Tipo</td><td>@p.Reses.Count</td>
+<td><a asp-action="Details" asp-route-id="@p.Identificacion">Detalle</a></td></tr>
+}
+</tbody></table>
+<form method="post" asp-action="Create" class="row g-2">
+  <div class="col-auto"><input name="identificacion" class="form-control" placeholder="Identificación" required /></div>
+  <div class="col-auto"><select name="tipo" class="form-select"><option>Ternero</option><option>Cebon</option><option>Novillo</option></select></div>
+  <div class="col-auto"><button class="btn btn-primary">Crear</button></div>
+</form>

@@ -1,0 +1,11 @@
+@model IReadOnlyList<Hacienda.Domain.Entities.Venta>
+@{ ViewData["Title"] = "Ventas"; }
+<h2>Ventas</h2>
+@if (TempData["Msg"] != null) { <div class="alert alert-success">@TempData["Msg"]</div> }
+@if (TempData["Err"] != null) { <div class="alert alert-danger">@TempData["Err"]</div> }
+<table class="table table-sm"><thead><tr><th>Fecha</th><th>Potrero</th><th>Res</th><th>Tipo</th><th>Monto</th></tr></thead>
+<tbody>
+@foreach (var v in Model) {
+<tr><td>@v.Fecha.ToString("yyyy-MM-dd")</td><td>@v.PotreroId</td><td>@v.NombreRes</td><td>@v.TipoRes</td><td>@v.Monto</td></tr>
+}
+</tbody></table>

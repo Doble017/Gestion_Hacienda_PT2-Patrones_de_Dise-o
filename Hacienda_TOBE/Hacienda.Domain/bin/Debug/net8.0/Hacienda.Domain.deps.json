@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Hacienda.Domain/1.0.0": {
+        "runtime": {
+          "Hacienda.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Hacienda.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

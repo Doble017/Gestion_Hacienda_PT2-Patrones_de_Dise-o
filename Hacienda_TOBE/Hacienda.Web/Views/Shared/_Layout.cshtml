@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Hacienda TO-BE</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+<header>
+<nav class="navbar navbar-expand-sm navbar-dark bg-success mb-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" asp-controller="Home" asp-action="Index">Hacienda TO-BE</a>
+    <div class="navbar-nav">
+      <a class="nav-link text-white" asp-controller="Potrero" asp-action="Index">Potreros</a>
+      <a class="nav-link text-white" asp-controller="Res" asp-action="Index">Reses</a>
+      <a class="nav-link text-white" asp-controller="Vacuna" asp-action="Index">Vacunas</a>
+      <a class="nav-link text-white" asp-controller="Venta" asp-action="Index">Ventas</a>
+      <a class="nav-link text-white" asp-controller="Account" asp-action="Logout">Salir</a>
+    </div>
+  </div>
+</nav>
+</header>
+<div class="container">
+<main role="main" class="pb-3">@RenderBody()</main>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
