@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Web\\Hacienda.Web.csproj": {}
+    "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Web\\Hacienda.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Application\\Hacienda.Application.csproj": {
+    "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Application\\Hacienda.Application.csproj",
+        "projectUniqueName": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj",
         "projectName": "Hacienda.Application",
-        "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Application\\Hacienda.Application.csproj",
-        "packagesPath": "C:\\Users\\hiler\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Application\\obj\\",
+        "projectPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj",
+        "packagesPath": "C:\\Users\\juanp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hiler\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\juanp\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Domain\\Hacienda.Domain.csproj": {
-                "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Domain\\Hacienda.Domain.csproj"
+              "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj": {
+                "projectPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj"
               }
             }
           }
@@ -62,21 +62,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.423/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.412/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Domain\\Hacienda.Domain.csproj": {
+    "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Domain\\Hacienda.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj",
         "projectName": "Hacienda.Domain",
-        "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Domain\\Hacienda.Domain.csproj",
-        "packagesPath": "C:\\Users\\hiler\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Domain\\obj\\",
+        "projectPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj",
+        "packagesPath": "C:\\Users\\juanp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hiler\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\juanp\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -120,21 +120,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.423/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.412/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj": {
+    "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj",
         "projectName": "Hacienda.Infrastructure",
-        "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\hiler\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\juanp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hiler\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\juanp\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -146,11 +146,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Application\\Hacienda.Application.csproj": {
-                "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Application\\Hacienda.Application.csproj"
+              "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj": {
+                "projectPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj"
               },
-              "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Domain\\Hacienda.Domain.csproj": {
-                "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Domain\\Hacienda.Domain.csproj"
+              "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj": {
+                "projectPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj"
               }
             }
           }
@@ -195,21 +195,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.423/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.412/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Web\\Hacienda.Web.csproj": {
+    "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Web\\Hacienda.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Web\\Hacienda.Web.csproj",
+        "projectUniqueName": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Web\\Hacienda.Web.csproj",
         "projectName": "Hacienda.Web",
-        "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Web\\Hacienda.Web.csproj",
-        "packagesPath": "C:\\Users\\hiler\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Web\\obj\\",
+        "projectPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Web\\Hacienda.Web.csproj",
+        "packagesPath": "C:\\Users\\juanp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hiler\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\juanp\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -221,11 +221,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Application\\Hacienda.Application.csproj": {
-                "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Application\\Hacienda.Application.csproj"
+              "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj": {
+                "projectPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj"
               },
-              "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj"
+              "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj"
               }
             }
           }
@@ -263,7 +263,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.423/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.412/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

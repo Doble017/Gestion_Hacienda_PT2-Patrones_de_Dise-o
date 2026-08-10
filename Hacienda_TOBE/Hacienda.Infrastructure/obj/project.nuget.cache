@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "JcuRtTQRZ4A=",
+  "dgSpecHash": "ySLvWItmPn4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\hiler\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\hiler\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512"
+    "C:\\Users\\juanp\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\juanp\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }
