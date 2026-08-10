@@ -55,4 +55,29 @@ public class ResAppService : IResAppService
         await _potreros.SaveAsync(potrero, ct);
         return $"Res '{nombreRes}' alimentada. Peso actual: {res.Peso} kg.";
     }
+
+    public async Task<string> AsignarChipAsync(string potreroId, string nombreRes, string chipId, EstadoChip estado, double? lat, double? lon, CancellationToken ct = default)
+    {
+        var potrero = await _potreros.GetByIdAsync(potreroId, ct)
+            ?? throw new InvalidOperationException($"Potrero '{potreroId}' no encontrado.");
+        var res = potrero.BuscarRes(nombreRes)
+            ?? throw new InvalidOperationException($"Res '{nombreRes}' no encontrada en '{potreroId}'.");
+
+        var chip = new ChipGeolocalizacion(chipId, estado, lat, lon);
+        res.AsignarChip(chip);
+        await _potreros.SaveAsync(potrero, ct);
+        return $"Chip '{chipId}' asignado a '{nombreRes}' (estado: {estado}).";
+    }
+
+    public async Task<string> QuitarChipAsync(string potreroId, string nombreRes, CancellationToken ct = default)
+    {
+        var potrero = await _potreros.GetByIdAsync(potreroId, ct)
+            ?? throw new InvalidOperationException($"Potrero '{potreroId}' no encontrado.");
+        var res = potrero.BuscarRes(nombreRes)
+            ?? throw new InvalidOperationException($"Res '{nombreRes}' no encontrada en '{potreroId}'.");
+        res.QuitarChip();
+        await _potreros.SaveAsync(potrero, ct);
+        return $"Chip removido de '{nombreRes}'.";
+    }
+
 }

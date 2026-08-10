@@ -83,4 +83,28 @@ public class ResController : Controller
         catch (Exception ex) { TempData["Err"] = ex.Message; }
         return RedirectToAction(nameof(Index));
     }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AsignarChip(string potreroId, string nombre, string chipId, int estado, double? lat, double? lon)
+    {
+        try
+        {
+            var est = Enum.IsDefined(typeof(Hacienda.Domain.Entities.EstadoChip), estado)
+                ? (Hacienda.Domain.Entities.EstadoChip)estado
+                : Hacienda.Domain.Entities.EstadoChip.Activo;
+            TempData["Msg"] = await _res.AsignarChipAsync(potreroId, nombre, chipId, est, lat, lon);
+        }
+        catch (Exception ex) { TempData["Err"] = ex.Message; }
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> QuitarChip(string potreroId, string nombre)
+    {
+        try { TempData["Msg"] = await _res.QuitarChipAsync(potreroId, nombre); }
+        catch (Exception ex) { TempData["Err"] = ex.Message; }
+        return RedirectToAction(nameof(Index));
+    }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hacienda.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+887c1788a69eab089940f5b17bf8af4e3d4f1978")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a38855c45dc9af0865badb194dae401a900ba51")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hacienda.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hacienda.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

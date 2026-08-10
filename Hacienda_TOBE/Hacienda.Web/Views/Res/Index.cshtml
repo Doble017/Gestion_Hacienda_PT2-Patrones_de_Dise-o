@@ -17,7 +17,7 @@
 <div class="table-responsive aw-card">
 <table class="table table-hover mb-0 align-middle">
   <thead class="table-light">
-    <tr><th>Nombre</th><th>Potrero</th><th>Tipo</th><th>Peso</th><th>Edad</th><th>Vacunas</th><th>Acciones</th></tr>
+    <tr><th>Nombre</th><th>Potrero</th><th>Tipo</th><th>Peso</th><th>Edad</th><th>Vacunas</th><th>Chip GPS</th><th>Acciones</th></tr>
   </thead>
   <tbody>
   @foreach (var item in Model) {
@@ -36,6 +36,13 @@
       <td>@r.Edad meses</td>
       <td>@r.VacunasAplicadas.Count</td>
       <td>
+        @if (r.Chip != null) {
+          <span class="badge bg-info text-dark" title="@(r.Chip.Latitud), @(r.Chip.Longitud)">@r.Chip.Identificador · @r.Chip.Estado</span>
+        } else {
+          <span class="text-muted small">Sin chip</span>
+        }
+      </td>
+      <td>
         <div class="btn-group btn-group-sm">
           <a class="btn btn-outline-primary"
              asp-action="DetalleVacunas"
@@ -49,6 +56,10 @@
                   data-bs-target="#venderModal"
                   data-potrero="@item.Potrero.Identificacion"
                   data-nombre="@r.Nombre">Vender</button>
+          <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
+                  data-bs-target="#chipModal"
+                  data-potrero="@item.Potrero.Identificacion"
+                  data-nombre="@r.Nombre">Chip GPS</button>
         </div>
       </td>
     </tr>
@@ -100,6 +111,41 @@
   </div></div>
 </div>
 
+
+<!-- Modal Chip GPS SC-2 -->
+<div class="modal fade" id="chipModal" tabindex="-1">
+  <div class="modal-dialog"><div class="modal-content">
+    <form method="post" asp-action="AsignarChip">
+      @Html.AntiForgeryToken()
+      <div class="modal-header"><h5 class="modal-title">Asignar chip de geolocalización</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <input type="hidden" name="potreroId" id="chipPotrero" />
+        <input type="hidden" name="nombre" id="chipNombre" />
+        <p>Res: <strong id="chipLabel"></strong></p>
+        <div class="mb-2"><label class="form-label">ID del chip</label>
+          <input name="chipId" class="form-control" required placeholder="CHIP-001" /></div>
+        <div class="mb-2"><label class="form-label">Estado</label>
+          <select name="estado" class="form-select">
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+            <option value="2">Mantenimiento</option>
+            <option value="3">Perdido</option>
+          </select></div>
+        <div class="row">
+          <div class="col mb-2"><label class="form-label">Latitud</label>
+            <input type="number" step="any" name="lat" class="form-control" placeholder="4.6097" /></div>
+          <div class="col mb-2"><label class="form-label">Longitud</label>
+            <input type="number" step="any" name="lon" class="form-control" placeholder="-74.0817" /></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-info">Asignar chip</button>
+      </div>
+    </form>
+  </div></div>
+</div>
+
 @section Scripts {
 <script>
 document.getElementById('alimentarModal')?.addEventListener('show.bs.modal', e => {
@@ -107,6 +153,12 @@ document.getElementById('alimentarModal')?.addEventListener('show.bs.modal', e =
   document.getElementById('alimPotrero').value = b.dataset.potrero;
   document.getElementById('alimNombre').value = b.dataset.nombre;
   document.getElementById('alimLabel').textContent = b.dataset.nombre + ' (' + b.dataset.potrero + ')';
+});
+document.getElementById('chipModal')?.addEventListener('show.bs.modal', e => {
+  const b = e.relatedTarget;
+  document.getElementById('chipPotrero').value = b.dataset.potrero;
+  document.getElementById('chipNombre').value = b.dataset.nombre;
+  document.getElementById('chipLabel').textContent = b.dataset.nombre + ' (' + b.dataset.potrero + ')';
 });
 document.getElementById('venderModal')?.addEventListener('show.bs.modal', e => {
   const b = e.relatedTarget;

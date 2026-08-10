@@ -8,6 +8,9 @@ public abstract class Res
     private readonly List<Vacuna> _vacunasAplicadas = new();
     public IReadOnlyList<Vacuna> VacunasAplicadas => _vacunasAplicadas.AsReadOnly();
 
+    /// <summary>SC-2: chip de geolocalización opcional (null = sin chip).</summary>
+    public ChipGeolocalizacion? Chip { get; private set; }
+
     protected Res(string nombre, uint peso)
     {
         if (string.IsNullOrWhiteSpace(nombre))
@@ -33,6 +36,16 @@ public abstract class Res
         foreach (var v in vacunas)
             _vacunasAplicadas.Add(v);
     }
+    public void AsignarChip(ChipGeolocalizacion chip)
+    {
+        if (chip is null) throw new ArgumentNullException(nameof(chip));
+        Chip = chip;
+    }
+
+    public void QuitarChip() => Chip = null;
+
+    public void CargarChip(ChipGeolocalizacion? chip) => Chip = chip;
+
 }
 
 public class Ternero : Res

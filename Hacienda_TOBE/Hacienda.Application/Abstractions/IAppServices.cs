@@ -15,6 +15,9 @@ public interface IResAppService
     Task<IReadOnlyList<(Potrero Potrero, Res Res)>> ListarTodasAsync(CancellationToken ct = default);
     Task<Res?> BuscarAsync(string potreroId, string nombreRes, CancellationToken ct = default);
     Task<string> AlimentarAsync(string potreroId, string nombreRes, uint incremento, CancellationToken ct = default);
+    /// <summary>SC-2: asigna o actualiza el chip de geolocalización de una res.</summary>
+    Task<string> AsignarChipAsync(string potreroId, string nombreRes, string chipId, EstadoChip estado, double? lat, double? lon, CancellationToken ct = default);
+    Task<string> QuitarChipAsync(string potreroId, string nombreRes, CancellationToken ct = default);
 }
 
 public interface IVacunacionAppService

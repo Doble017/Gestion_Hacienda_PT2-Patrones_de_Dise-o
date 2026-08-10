@@ -91,7 +91,20 @@ public class FilePotreroRepository : IPotreroRepository
                     "novillo" => SafeCreate(() => new Novillo(p[1], peso, edad)),
                     _ => null
                 };
-                if (res != null) potrero.CargarRes(res);
+                if (res != null)
+                {
+                    // SC-2: columnas opcionales chipId|estado|lat|lon (índices 5..8)
+                    if (p.Length >= 6 && !string.IsNullOrWhiteSpace(p[5]))
+                    {
+                        var estado = EstadoChip.Activo;
+                        if (p.Length >= 7 && int.TryParse(p[6], out var est) && Enum.IsDefined(typeof(EstadoChip), est))
+                            estado = (EstadoChip)est;
+                        double? lat = p.Length >= 8 && double.TryParse(p[7], System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var la) ? la : null;
+                        double? lon = p.Length >= 9 && double.TryParse(p[8], System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var lo) ? lo : null;
+                        res.CargarChip(new ChipGeolocalizacion(p[5], estado, lat, lon));
+                    }
+                    potrero.CargarRes(res);
+                }
             }
         }
 
@@ -153,7 +166,16 @@ public class FilePotreroRepository : IPotreroRepository
                     Novillo => "Novillo",
                     _ => "Res"
                 };
-                resLines.Add($"{pot.Identificacion}|{r.Nombre}|{r.Peso}|{r.Edad}|{tipo}");
+                // SC-2: append chip columns when present (backward compatible)
+                if (r.Chip is null)
+                    resLines.Add($"{pot.Identificacion}|{r.Nombre}|{r.Peso}|{r.Edad}|{tipo}");
+                else
+                {
+                    var c = r.Chip;
+                    var lat = c.Latitud?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "";
+                    var lon = c.Longitud?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "";
+                    resLines.Add($"{pot.Identificacion}|{r.Nombre}|{r.Peso}|{r.Edad}|{tipo}|{c.Identificador}|{(int)c.Estado}|{lat}|{lon}");
+                }
                 foreach (var v in r.VacunasAplicadas)
                 {
                     if (v is Bacteriana b)

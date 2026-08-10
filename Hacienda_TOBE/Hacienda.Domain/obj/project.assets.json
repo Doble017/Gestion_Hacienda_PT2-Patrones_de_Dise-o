@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Domain\\Hacienda.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj",
       "projectName": "Hacienda.Domain",
-      "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Domain\\Hacienda.Domain.csproj",
+      "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj",
       "packagesPath": "C:\\Users\\hiler\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Domain\\obj\\",
+      "outputPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hiler\\AppData\\Roaming\\NuGet\\NuGet.Config"

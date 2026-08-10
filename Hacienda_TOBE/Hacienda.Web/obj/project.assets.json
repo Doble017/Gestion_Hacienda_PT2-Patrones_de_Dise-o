@@ -212,11 +212,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Web\\Hacienda.Web.csproj",
+      "projectUniqueName": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Web\\Hacienda.Web.csproj",
       "projectName": "Hacienda.Web",
-      "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Web\\Hacienda.Web.csproj",
+      "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Web\\Hacienda.Web.csproj",
       "packagesPath": "C:\\Users\\hiler\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Web\\obj\\",
+      "outputPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hiler\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -231,11 +231,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Application\\Hacienda.Application.csproj": {
-              "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Application\\Hacienda.Application.csproj"
+            "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj": {
+              "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj"
             },
-            "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE_Full\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj"
+            "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Infrastructure\\Hacienda.Infrastructure.csproj"
             }
           }
         }
