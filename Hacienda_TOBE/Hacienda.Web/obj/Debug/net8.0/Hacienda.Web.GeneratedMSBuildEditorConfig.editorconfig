@@ -9,12 +9,17 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Hacienda.Web
 build_property.RootNamespace = Hacienda.Web
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\hiler\Desktop\PropuestaHacienda\Hacienda_TOBE\Hacienda.Web\
+=======
+build_property.ProjectDir = C:\Users\juanp\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\
+>>>>>>> fdd7d3c1c426be87d02fcafc8f88c14303588c27
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+<<<<<<< HEAD
 build_property.MSBuildProjectDirectory = C:\Users\hiler\Desktop\PropuestaHacienda\Hacienda_TOBE\Hacienda.Web
 build_property._RazorSourceGeneratorDebug = 
 
@@ -99,5 +104,91 @@ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hiler/Desktop/PropuestaHacienda/Hacienda_TOBE/Hacienda.Web/Views/Shared/_Layout.cshtml]
+=======
+build_property.MSBuildProjectDirectory = C:\Users\juanp\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Potrero/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG90cmVyb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Potrero/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG90cmVyb1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Potrero/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG90cmVyb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Res/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Res/DetalleVacunas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzXERldGFsbGVWYWN1bmFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Res/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Usuario/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Usuario/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Vacuna/Aplicar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjdW5hXEFwbGljYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Vacuna/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjdW5hXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Vacuna/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjdW5hXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Venta/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudGFcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Venta/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudGFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanp/Propuesta_HaciendaCorregida-SOLID-/Hacienda_TOBE/Hacienda.Web/Views/Shared/_Layout.cshtml]
+>>>>>>> fdd7d3c1c426be87d02fcafc8f88c14303588c27
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-b06pvaywxn

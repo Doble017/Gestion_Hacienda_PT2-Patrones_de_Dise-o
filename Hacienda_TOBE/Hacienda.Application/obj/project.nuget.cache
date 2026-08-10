@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "i1gf3gm/P5s=",
   "success": true,
   "projectFilePath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj",
+=======
+  "dgSpecHash": "3y5aEXaEgG0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj",
+>>>>>>> fdd7d3c1c426be87d02fcafc8f88c14303588c27
   "expectedPackageFiles": [],
   "logs": []
 }

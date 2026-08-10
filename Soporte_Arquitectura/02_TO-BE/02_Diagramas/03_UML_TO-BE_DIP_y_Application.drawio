@@ -1,0 +1,86 @@
+<mxfile host="app.diagrams.net" modified="2026-08-09T23:00:00.000Z" agent="Grok" version="22.1.0">
+  <diagram id="tobe-dip" name="TO-BE DIP Application Infrastructure">
+    <mxGraphModel dx="1500" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="t" value="UML TO-BE — DIP: Controllers → AppServices → Ports ← Infrastructure&#xa;Azul = abstracciones · Verde = Application · Naranja = adaptadores · Composition Root = Program.cs" style="text;html=1;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="100" y="15" width="1200" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Controllers -->
+        <mxCell id="ctr" value="Controllers (Web)" style="swimlane;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;startSize=26;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="1520" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="PotreroController&#xa;→ IPotreroAppService" style="rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=center;" vertex="1" parent="ctr"><mxGeometry x="20" y="35" width="160" height="50" as="geometry"/></mxCell>
+        <mxCell id="c2" value="ResController&#xa;→ IRes + IPotrero + IVenta" style="rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=center;" vertex="1" parent="ctr"><mxGeometry x="200" y="35" width="180" height="50" as="geometry"/></mxCell>
+        <mxCell id="c3" value="VacunaController&#xa;→ IVacunacion + IPotrero + IRes" style="rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=center;" vertex="1" parent="ctr"><mxGeometry x="400" y="35" width="200" height="50" as="geometry"/></mxCell>
+        <mxCell id="c4" value="VentaController&#xa;→ IVenta + IRes" style="rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=center;" vertex="1" parent="ctr"><mxGeometry x="620" y="35" width="150" height="50" as="geometry"/></mxCell>
+        <mxCell id="c5" value="UsuarioController&#xa;→ IUsuarioAppService" style="rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=center;" vertex="1" parent="ctr"><mxGeometry x="790" y="35" width="160" height="50" as="geometry"/></mxCell>
+        <mxCell id="c6" value="AccountController&#xa;→ IUsuarioAppService" style="rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=center;" vertex="1" parent="ctr"><mxGeometry x="970" y="35" width="160" height="50" as="geometry"/></mxCell>
+
+        <!-- App interfaces -->
+        <mxCell id="iapp" value="«interface» Application (ISP)" style="swimlane;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;startSize=26;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="1000" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="ia1" value="IPotreroAppService" style="fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="iapp"><mxGeometry x="20" y="35" width="140" height="30" as="geometry"/></mxCell>
+        <mxCell id="ia2" value="IResAppService" style="fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="iapp"><mxGeometry x="180" y="35" width="120" height="30" as="geometry"/></mxCell>
+        <mxCell id="ia3" value="IVacunacionAppService" style="fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="iapp"><mxGeometry x="320" y="35" width="150" height="30" as="geometry"/></mxCell>
+        <mxCell id="ia4" value="IVentaAppService" style="fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="iapp"><mxGeometry x="490" y="35" width="130" height="30" as="geometry"/></mxCell>
+        <mxCell id="ia5" value="IUsuarioAppService" style="fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="iapp"><mxGeometry x="640" y="35" width="140" height="30" as="geometry"/></mxCell>
+
+        <!-- App services -->
+        <mxCell id="svc" value="App Services (implementaciones)" style="swimlane;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;startSize=26;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="1000" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="PotreroAppService" style="fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="svc"><mxGeometry x="20" y="40" width="140" height="30" as="geometry"/></mxCell>
+        <mxCell id="s2" value="ResAppService" style="fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="svc"><mxGeometry x="180" y="40" width="120" height="30" as="geometry"/></mxCell>
+        <mxCell id="s3" value="VacunacionAppService" style="fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="svc"><mxGeometry x="320" y="40" width="150" height="30" as="geometry"/></mxCell>
+        <mxCell id="s4" value="VentaAppService" style="fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="svc"><mxGeometry x="490" y="40" width="130" height="30" as="geometry"/></mxCell>
+        <mxCell id="s5" value="UsuarioAppService" style="fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="svc"><mxGeometry x="640" y="40" width="140" height="30" as="geometry"/></mxCell>
+
+        <!-- Ports domain -->
+        <mxCell id="ports" value="«interface» Ports (Domain)" style="swimlane;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;startSize=26;" vertex="1" parent="1">
+          <mxGeometry x="40" y="440" width="1000" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="p1" value="IPotreroRepository" style="fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="ports"><mxGeometry x="20" y="35" width="140" height="30" as="geometry"/></mxCell>
+        <mxCell id="p2" value="IVacunaRepository" style="fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="ports"><mxGeometry x="180" y="35" width="140" height="30" as="geometry"/></mxCell>
+        <mxCell id="p3" value="IVentaRepository" style="fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="ports"><mxGeometry x="340" y="35" width="130" height="30" as="geometry"/></mxCell>
+        <mxCell id="p4" value="IUsuarioRepository" style="fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="ports"><mxGeometry x="490" y="35" width="140" height="30" as="geometry"/></mxCell>
+        <mxCell id="p5" value="IEventPublisher" style="fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="ports"><mxGeometry x="650" y="35" width="130" height="30" as="geometry"/></mxCell>
+
+        <!-- Infrastructure -->
+        <mxCell id="infra" value="Infrastructure (adaptadores)" style="swimlane;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;startSize=26;" vertex="1" parent="1">
+          <mxGeometry x="40" y="560" width="1000" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="f1" value="FilePotreroRepository" style="fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="infra"><mxGeometry x="20" y="40" width="150" height="30" as="geometry"/></mxCell>
+        <mxCell id="f2" value="FileVacunaRepository" style="fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="infra"><mxGeometry x="190" y="40" width="150" height="30" as="geometry"/></mxCell>
+        <mxCell id="f3" value="FileVentaRepository" style="fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="infra"><mxGeometry x="360" y="40" width="140" height="30" as="geometry"/></mxCell>
+        <mxCell id="f4" value="FileUsuarioRepository" style="fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="infra"><mxGeometry x="520" y="40" width="150" height="30" as="geometry"/></mxCell>
+        <mxCell id="f5" value="LoggingEventPublisher" style="fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="infra"><mxGeometry x="690" y="40" width="150" height="30" as="geometry"/></mxCell>
+
+        <!-- Realization arrows infra -> ports -->
+        <mxCell id="r1" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="f1" target="p1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r2" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="f2" target="p2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r3" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="f3" target="p3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r4" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="f4" target="p4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r5" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="f5" target="p5"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Realization app svc -> interfaces -->
+        <mxCell id="ra1" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="s1" target="ia1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ra2" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="s2" target="ia2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ra3" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="s3" target="ia3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ra4" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="s4" target="ia4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ra5" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="s5" target="ia5"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Composition root -->
+        <mxCell id="cr" value="Composition Root&#xa;Program.cs&#xa;+ DependencyInjection.AddHaciendaInfrastructure&#xa;Singleton: File* + LoggingEventPublisher + Policy/Factory&#xa;Scoped: *AppService" style="shape=note;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacingLeft=8;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="200" width="320" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="nota" value="DIP: módulos de alto nivel (Application/Web) dependen de abstracciones.&#xa;Módulos de bajo nivel (File*, Logging*) implementan esas abstracciones.&#xa;Ningún Controller referencia FilePotreroRepository ni LoggingEventPublisher." style="shape=note;fillColor=#fff9e6;strokeColor=#d6b656;align=left;spacingLeft=8;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="350" width="320" height="100" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
