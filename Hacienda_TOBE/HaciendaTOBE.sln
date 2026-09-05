@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hacienda.Web", "Hacienda.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hacienda.Tests", "Hacienda.Tests\Hacienda.Tests.csproj", "{815E1442-F6EE-4A4F-9CDD-D1C32DDB92EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hacienda.Consola", "Hacienda.Consola\Hacienda.Consola.csproj", "{D51F6543-A253-4F77-9565-014C047308CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{815E1442-F6EE-4A4F-9CDD-D1C32DDB92EF}.Release|x64.Build.0 = Release|Any CPU
 		{815E1442-F6EE-4A4F-9CDD-D1C32DDB92EF}.Release|x86.ActiveCfg = Release|Any CPU
 		{815E1442-F6EE-4A4F-9CDD-D1C32DDB92EF}.Release|x86.Build.0 = Release|Any CPU
+		{D51F6543-A253-4F77-9565-014C047308CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D51F6543-A253-4F77-9565-014C047308CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D51F6543-A253-4F77-9565-014C047308CF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D51F6543-A253-4F77-9565-014C047308CF}.Debug|x64.Build.0 = Debug|Any CPU
+		{D51F6543-A253-4F77-9565-014C047308CF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D51F6543-A253-4F77-9565-014C047308CF}.Debug|x86.Build.0 = Debug|Any CPU
+		{D51F6543-A253-4F77-9565-014C047308CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D51F6543-A253-4F77-9565-014C047308CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D51F6543-A253-4F77-9565-014C047308CF}.Release|x64.ActiveCfg = Release|Any CPU
+		{D51F6543-A253-4F77-9565-014C047308CF}.Release|x64.Build.0 = Release|Any CPU
+		{D51F6543-A253-4F77-9565-014C047308CF}.Release|x86.ActiveCfg = Release|Any CPU
+		{D51F6543-A253-4F77-9565-014C047308CF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

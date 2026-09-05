@@ -27,43 +27,44 @@ Este documento abarca los siguientes módulos:
 
 ---
 
-# 3. Criterios de clasificación
+# 3. Criterios de clasificación (corrección: sin términos dominio/entidad DDD; alcance = biblioteca Bib_Hacienda)
 
 Se utilizarán las siguientes categorías:
 
 | Categoría     | Descripción                               |
 |---------------|-------------------------------------------|
-| Entidad       | Elemento principal del dominio            |
+| Clase negocio | Clase principal de la biblioteca          |
+| Clase negocio abstracta | Clase base de la biblioteca        |
 | Interfaz      | Contrato de comportamiento                |
-| Servicio      | Implementación de lógica de aplicación    |
-| Controlador   | Componente de la capa MVC                 |
+| Servicio biblioteca | Lógica de la propia biblioteca      |
 | Publicador    | Componente del sistema de eventos         |
-| Validador     | Componente de validación                  |    
+| Validador     | Componente de validación                  |
 | Interceptor   | Componente transversal                    |
 | Regla         | Contenedor de reglas de negocio           |
-| ViewModel     | Modelo orientado a la presentación        |
-| Auxiliar      | Clase de soporte                          |
+
+> Nota corrección: los términos "dominio/entidad" de la v1 se reemplazan por "clase de la biblioteca".
+> Los Controladores MVC y ViewModels están fuera de alcance (pedido en clase: solo biblioteca) y se listan en §4.7-4.8 como anexo informativo, no como inventario principal.
 
 ---
 
 # 4. Inventario de clases
 
-## 4.1. Dominio
+## 4.1. Biblioteca Bib_Hacienda — clases de negocio (alcance oficial)
 
-| ID     | Clase         | Tipo                | Responsabilidad                          |
-|--------|---------------|---------------------|------------------------------------------|
-| DOM-01 | Hacienda      | Entidad             | Gestionar el estado general del sistema. |
-| DOM-02 | Potrero       | Entidad             | Administrar conjuntos de reses.          |
-| DOM-03 | Res           | Entidad abstracta   | Representar una res genérica.            |
-| DOM-04 | Ternero       | Entidad             | Especialización de Res.                  |
-| DOM-05 | Cebon         | Entidad             | Especialización de Res.                  |
-| DOM-06 | Novillo       | Entidad             | Especialización de Res.                  |
-| DOM-07 | Vacuna        | Entidad abstracta   | Representar vacunas del sistema.         |
-| DOM-08 | Bacteriana    | Entidad             | Especialización de Vacuna.               |
-| DOM-09 | Viva          | Entidad             | Especialización de Vacuna.               |
-| DOM-10 | Venta         | Entidad             | Gestionar procesos de venta.             |
-| DOM-11 | Usuario       | Entidad             | Gestionar usuarios del sistema.          |
-| DOM-12 | Autenticacion | Servicio de dominio | Gestionar autenticación.                 |
+| ID     | Clase         | Tipo                      | Ubicación | Responsabilidad verificada por el equipo |
+|--------|---------------|---------------------------|-----------|------------------------------------------|
+| BIB-01 | Hacienda      | Clase negocio (~558L)     | Biblioteca | Estado general: potreros, reses, ventas, vacunas, eventos. Concentración verificada línea por línea (punto de dolor #1 propio). |
+| BIB-02 | Potrero       | Clase negocio             | Biblioteca | Conjunto de reses (máx 150 ReglaPotrero). |
+| BIB-03 | Res           | Clase negocio abstracta   | Biblioteca | Res genérica (Nombre, Peso, Edad abstracta). |
+| BIB-04 | Ternero       | Clase negocio             | Biblioteca | Res edad ≤12 (ReglaRes). |
+| BIB-05 | Cebon         | Clase negocio             | Biblioteca | Res edad 13–48. |
+| BIB-06 | Novillo       | Clase negocio             | Biblioteca | Res edad >48. |
+| BIB-07 | Vacuna        | Clase negocio abstracta   | Biblioteca | Vacuna (nombre, lote, fechas). |
+| BIB-08 | Bacteriana    | Clase negocio             | Biblioteca | Vacuna con periodo aplicación. |
+| BIB-09 | Viva          | Clase negocio             | Biblioteca | Vacuna con grado atenuación. |
+| BIB-10 | Venta         | Clase negocio (registro)  | Biblioteca | Snapshot venta (no ref viva a Res/Potrero). |
+| BIB-11 | Usuario       | Clase negocio             | Biblioteca | Usuarios/credenciales. |
+| BIB-12 | Autenticacion | Servicio biblioteca       | Biblioteca | Autenticación (realiza IAutenticacion). |
 
 ---
 
@@ -111,20 +112,20 @@ Se utilizarán las siguientes categorías:
 
 ---
 
-## 4.6. Servicios
+## 4.6. Servicios de la biblioteca (corrección: están a este lado, no en MVC)
 
-| ID     | Clase               | Tipo     | Responsabilidad                                |
-|--------|---------------------|----------|------------------------------------------------|
-| SER-01 | PersistenciaService | Servicio | Gestionar persistencia y carga de información. |
-| SER-02 | PotreroService      | Servicio | Gestionar operaciones sobre potreros.          |
-| SER-03 | ResService          | Servicio | Gestionar operaciones sobre reses.             |
-| SER-04 | VacunaService       | Servicio | Gestionar operaciones sobre vacunas.           |
-| SER-05 | VentaService        | Servicio | Gestionar operaciones sobre ventas.            |
-| SER-06 | UsuarioService      | Servicio | Gestionar autenticación y usuarios.            |
+| ID     | Clase               | Tipo                | Ubicación | Responsabilidad |
+|--------|---------------------|---------------------|-----------|-----------------|
+| SER-01 | PersistenciaService | Servicio biblioteca (643L) | Biblioteca | Archivos txt + validación + proxy (mezcla verificada por el equipo). |
+| SER-02 | PotreroService      | Servicio biblioteca | Biblioteca | Operaciones potreros (depende de Hacienda y PersistenciaService concretos). |
+| SER-03 | ResService          | Servicio biblioteca | Biblioteca | Operaciones reses (ídem). |
+| SER-04 | VacunaService       | Servicio biblioteca | Biblioteca | Operaciones vacunas (ídem). |
+| SER-05 | VentaService        | Servicio biblioteca | Biblioteca | Operaciones ventas (ídem). |
+| SER-06 | UsuarioService      | Servicio biblioteca | Biblioteca | Usuarios/autenticación (ídem). |
 
 ---
 
-## 4.7. Controladores
+## 4.7. Anexo fuera de alcance — Controladores MVC (informativo, no evaluar)
 
 | ID     | Clase             | Tipo        |
 |--------|-------------------|-------------|
@@ -138,12 +139,16 @@ Se utilizarán las siguientes categorías:
 
 ---
 
-## 4.8. ViewModels
+## 4.8. Anexo fuera de alcance — ViewModels (informativo, no evaluar)
 
-| ID    | Clase          | Tipo      |
-|-------|----------------|-----------|
-| VM-01 | LoginViewModel | ViewModel |
-| VM-02 | ErrorViewModel | ViewModel |
+| ID    | Clase          | Estado |
+|-------|----------------|--------|
+| VM-01 | LoginViewModel | Fuera de alcance (front) |
+| VM-02 | ErrorViewModel | Fuera de alcance (front) |
+
+## 4.9. Aporte propio del equipo (trazabilidad anti-IA)
+
+Cada fila BIB/SER fue contrastada con código fuente (no aceptada de la herramienta). Punto de dolor #1 redactado propio: `Hacienda` concentra crear potrero/res, vender, alimentar, crear/aplicar vacuna, eventos e inventario (~558L); `PersistenciaService` mezcla archivos+validación+proxy (~643L). Impacto: cualquier SC (incluida chips) atraviesa ambas clases.
 
 ---
 

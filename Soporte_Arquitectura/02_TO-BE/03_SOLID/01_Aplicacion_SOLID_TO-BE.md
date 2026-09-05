@@ -180,14 +180,23 @@ Sustituir archivos planos por SQL implica **solo** un nuevo adaptador + un cambi
 
 ---
 
-## 7. Artefactos a presentar
+## 7. Artefactos a presentar (corrección: un solo diagrama negocio + consola)
 
 | Artefacto | Ruta |
 |-----------|------|
-| UML notación extendida (principal) | `02_Diagramas/00_UML_TO-BE_Notacion_Extendida.drawio` |
-| UML capas | `02_Diagramas/01_UML_TO-BE_Capas.drawio` |
-| UML dominio | `02_Diagramas/02_UML_TO-BE_Dominio.drawio` |
-| UML DIP | `02_Diagramas/03_UML_TO-BE_DIP_y_Application.drawio` |
+| UML único oficial (evaluar solo este) | `02_Diagramas/UML_TO-BE_Dominio_Unico.drawio` + `UML_TO-BE_Dominio_Unico.md` |
+| Anexos (no evaluar) | `00_Notacion_Extendida, 01_Capas, 02_Dominio, 03_DIP_y_Application` |
 | LSP | `04_LSP/01_Verificacion_LSP_Res_Vacuna.md` |
-| DIP | `05_DIP/01_Inversion_Dependencias_TO-BE.md` |
-| ADRs | `06_ADR/ADR-01` … `ADR-05` |
+| DIP | `05_DIP/01_Inversion_Dependencias_TO-BE.md` (Root: Consola/Program.cs y Web/Program.cs) |
+| ADRs | `06_ADR/ADR-01` … `ADR-06` (ADR-06 = SC-02 chips) |
+| Demo funcional | `Hacienda.Consola` menú 1-8 (ver `Hacienda_TOBE/README.md`), `Hacienda.Web` como anexo |
+
+## 8. Trazabilidad propia SC-02 chips (lo aplicado de SOLID al cambio elegido)
+
+| Principio | Aplicación al chip | Evidencia |
+|---|---|---|
+| SRP | Chip vive en `ChipGeolocalizacion`; `Res` solo lo referencia opcional; `ResAppService` orquesta; `FilePotreroRepository` persiste | `Res.cs:12,39-47`, `ResAppService.cs:59-81` |
+| OCP | Tipo nuevo + columnas opcionales retrocompatibles; sin tocar vacunación/ventas/Root | Métrica: AS-IS 6-8/8-10 vs TO-BE 4/5, aditivo |
+| LSP | Chip no altera jerarquía `Res/Vacuna`; sustitución intacta | `04_LSP` |
+| ISP | `AsignarChipAsync/QuitarChipAsync` solo en `IResAppService` | `IAppServices.cs:19-20` |
+| DIP | App depende de `IPotreroRepository/IEventPublisher`; File detrás del puerto | `DependencyInjection.cs`, Root Consola/Web |

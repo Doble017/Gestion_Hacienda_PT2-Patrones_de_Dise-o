@@ -31,13 +31,16 @@ En este sistema:
 
 ---
 
-## 3. Composition Root
+## 3. Composition Root (corrección: Web + Consola, inyección por constructor)
 
-**Archivo:** `Hacienda.Web/Program.cs`
+**Archivos:** `Hacienda.Web/Program.cs` y `Hacienda.Consola/Program.cs` (defensa oficial en Consola, pedido en clase).
 
 ```csharp
+// Web:
 var dataPath = Path.Combine(builder.Environment.ContentRootPath, "Datos");
 builder.Services.AddHaciendaInfrastructure(dataPath);
+// Consola (defensa): services.AddHaciendaInfrastructure(datosPath); menú resuelve I*AppService por ctor (Scoped por operación).
+// Alto nivel nunca hace new File* ni new *AppService; todo entra por constructor y se registra en DependencyInjection.cs.
 ```
 
 **Archivo:** `Hacienda.Infrastructure/DependencyInjection.cs`

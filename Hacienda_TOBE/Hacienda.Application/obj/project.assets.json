@@ -32,19 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj",
-      "projectName": "Hacienda.Application",
-      "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj",
-      "packagesPath": "C:\\Users\\hiler\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Application\\obj\\",
-=======
       "projectUniqueName": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj",
       "projectName": "Hacienda.Application",
       "projectPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Application\\Hacienda.Application.csproj",
       "packagesPath": "C:\\Users\\juanp\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Application\\obj\\",
->>>>>>> fdd7d3c1c426be87d02fcafc8f88c14303588c27
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\juanp\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -59,13 +51,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-<<<<<<< HEAD
-            "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj": {
-              "projectPath": "C:\\Users\\hiler\\Desktop\\PropuestaHacienda\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj"
-=======
             "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj": {
               "projectPath": "C:\\Users\\juanp\\Propuesta_HaciendaCorregida-SOLID-\\Hacienda_TOBE\\Hacienda.Domain\\Hacienda.Domain.csproj"
->>>>>>> fdd7d3c1c426be87d02fcafc8f88c14303588c27
             }
           }
         }
@@ -100,7 +87,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.412/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.423/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -212,7 +212,7 @@ En particular, las dependencias de los controladores directamente hacia `Haciend
 
 Las dependencias de los servicios serán evaluadas según la responsabilidad concreta que ejerzan dentro del sistema.
 
-El uso predominante de `Singleton` queda registrado como una característica del estado actual. Su impacto arquitectónico será evaluado únicamente cuando exista evidencia que lo relacione con alguno de los problemas que sean objeto del diagnóstico.
+Corrección punto 12 (pedida en clase — Singleton): `Singleton` aquí es **ciclo de vida de DI en `Program.cs`** (una sola instancia de `Hacienda`, `PersistenciaService` y Services registrada con `AddSingleton`), NO patrón GoF Singleton con `Instance`/`lock` en `Hacienda`. Evidencia: §9 tabla de registros + secuencia `Program → Hacienda → PersistenciaService` en arranque. No se afirma Singleton GoF en el negocio. Su impacto (estado global compartido, dificulta pruebas y extiende God Class H-03/H-12) se evalúa solo con esa evidencia.
 
 ---
 

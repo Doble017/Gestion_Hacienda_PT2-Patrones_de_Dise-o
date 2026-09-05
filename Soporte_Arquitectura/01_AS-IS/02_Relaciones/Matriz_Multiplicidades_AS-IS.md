@@ -1,7 +1,7 @@
-# Matriz de Multiplicidades AS-IS
+# Matriz de Multiplicidades AS-IS — DOCUMENTO DE APOYO (no solicitado; solo se evalúa su resumen en el UML único)
 
-**Proyecto:** Sistema de Gestión de Hacienda  
-**Versión:** AS-IS 1.0  
+**Proyecto:** Sistema de Gestión de Hacienda
+**Versión:** AS-IS 1.1 (rev. 09/2026: se conserva como apoyo; núcleo evaluable: Hacienda 1-0..* Potrero, Potrero 1-0..* Res ≤150, Res 1-0..* Vacuna, Hacienda 1-0..* Venta/Vacuna)
 **Fecha:** 07/08/2026
 
 ---

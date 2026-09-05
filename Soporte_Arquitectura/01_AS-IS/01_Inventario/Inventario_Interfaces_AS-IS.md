@@ -190,15 +190,21 @@ ILogger<HomeController>
 
 ---
 
-# 7. Resumen de interfaces
+# 7. Resumen de interfaces (corrección: se agregan INT-03..05 citadas en Matriz REAL-03..05)
 
 | ID     | Interfaz               | Origen              | Implementaciones/uso                                        |
 | ------ | ---------------------- | ------------------- | ----------------------------------------------------------- |
-| INT-01 | `IValidarInformacion`  | Sistema             | `Validacion`                                                |
-| INT-02 | `IAutenticacion`       | Sistema             | `Autenticacion`                                             |
-| EXT-01 | `IInterceptor`         | Castle DynamicProxy | `InterceptorAutenticacion`, `InterceptorValidarInformacion` |
-| EXT-02 | `IHttpContextAccessor` | ASP.NET Core        | Dependencia de interceptores                                |
-| EXT-03 | `ILogger<T>`           | .NET                | Dependencia de `HomeController`                             |
+| INT-01 | `IValidarInformacion`  | Biblioteca          | `Validacion` (ValidarRes/Potrero/Vacuna/Venta)              |
+| INT-02 | `IAutenticacion`       | Biblioteca          | `Autenticacion`                                             |
+| INT-03 | `IVacunacion`          | Biblioteca          | `Hacienda` realiza `aplicar_vacuna` (REAL-03; verificado en Matriz_Relaciones) |
+| INT-04 | `IVentaRes`            | Biblioteca          | `Hacienda` realiza `vender_res` (REAL-04)                   |
+| INT-05 | `ICreacionVacuna`      | Biblioteca          | `Hacienda` realiza `crear_vacuna` (REAL-05)                 |
+| EXT-01 | `IInterceptor`         | Castle DynamicProxy | Anexo externo (no negocio)                                  |
+| EXT-02 | `IHttpContextAccessor` | ASP.NET Core        | Anexo externo (no negocio)                                  |
+| EXT-03 | `ILogger<T>`           | .NET                | Anexo externo (no negocio)                                  |
+
+> Corrección: INT-03..05 cierran la brecha con `Matriz_Relaciones REAL-03..05`. Las EXT-* quedan como anexo externo y no se dibujan en el diagrama único.
+> Aporte propio: INT-01 ancha (`NotImplementedException` en validadores que no implementan todo) e INT-03..05 en una sola God Class son evidencia ISP/H-02/H-09 verificada por el equipo, no solo propuesta IA.
 
 
 ---

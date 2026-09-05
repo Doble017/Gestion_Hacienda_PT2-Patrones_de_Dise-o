@@ -21,13 +21,24 @@ Regla: Presentation → Application → Domain ← Infrastructure
 | ISP | IPotrero/Res/Vacunacion/Venta/Usuario AppService |
 | DIP | Controllers y App Services dependen de puertos; Composition Root en Program.cs |
 
-## Ejecutar
+## Ejecutar (defensa oficial: consola de dominio, pedido en clase)
+
+```bash
+cd Hacienda.Consola
+dotnet run
+```
+
+Menú: 1 listar · 2 crear potrero · 3 agregar res · 4 alimentar · 5 aplicar vacuna ·
+6 asignar chip GPS (SC-02) · 7 quitar chip · 8 vender · 0 salir.
+Datos compartidos en `Hacienda.Web/Datos/*.txt` (mismo `FileStoragePaths`, DIP intacto).
+
+Verificación rápida: `dotnet test` (5 pruebas: 2 potrero + 3 chips SC-02).
+
+## Anexo Web (no parte de la defensa)
 
 ```bash
 cd Hacienda.Web
 dotnet run
 ```
 
-Login: `santi` / `santi11`
-
-Datos en `Hacienda.Web/Datos/*.txt`
+Login: `santi` / `santi11`. Se conserva como anexo funcional (columna `Chip GPS` en Reses).

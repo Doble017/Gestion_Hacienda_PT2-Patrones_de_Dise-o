@@ -1,7 +1,7 @@
-# Matriz de Relaciones AS-IS
+# Matriz de Relaciones AS-IS — DOCUMENTO DE APOYO (resumen evaluable en UML único; decisión: todo asociación, sin composición)
 
-**Proyecto:** Sistema de Gestión de Hacienda  
-**Versión:** AS-IS 1.0  
+**Proyecto:** Sistema de Gestión de Hacienda
+**Versión:** AS-IS 1.1 (rev. 09/2026)
 **Fecha:** 07/08/2026
 
 ---

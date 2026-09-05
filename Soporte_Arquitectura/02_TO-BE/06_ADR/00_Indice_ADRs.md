@@ -15,3 +15,4 @@ Mínimo exigido: **cinco** decisiones estructurales. Cada ADR incluye:
 | ADR-03 | Segregación de interfaces de aplicación | ISP, DIP | H-02 |
 | ADR-04 | Extracción de publishers a adaptadores | DIP, OCP | H-01, H-04 |
 | ADR-05 | Conservar jerarquías `Res` y `Vacuna` | LSP, OCP | H-06 (refutación) |
+| ADR-06 | SC-02 Chips como extensión aditiva | OCP, SRP, ISP, DIP | H-03, H-05 + SC-02 |

@@ -4,8 +4,9 @@
 **Fase:** 4 — Implementación y evidencia  
 **Objetivo:** Demostrar que el rediseño arquitectónico preserva el comportamiento observable del sistema.
 
-**Entorno TO-BE:** solución `Hacienda_TOBE` · proyecto `Hacienda.Web`  
-**Credenciales de prueba:** usuario `santi` · contraseña `santi11`
+**Entorno TO-BE:** solución `Hacienda_TOBE` · defensa oficial `Hacienda.Consola` (Web como anexo)
+**Credenciales Web (anexo):** usuario `santi` · contraseña `santi11`
+**Respaldo legible (el .docx no abrió al profesor):** `Evidencias/Evidencia_Consola_C01-C08_SC02.md` (salidas reales terminal + `Reses.txt` + `dotnet test 5/5`)
 
 ---
 

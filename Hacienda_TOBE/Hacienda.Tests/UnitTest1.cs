@@ -1,5 +1,6 @@
 ﻿using Hacienda.Domain.Entities;
 using Hacienda.Domain.Factories;
+using Xunit;
 
 namespace Hacienda.Tests;
 

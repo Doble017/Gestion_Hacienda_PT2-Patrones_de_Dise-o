@@ -10,21 +10,28 @@ Archivos generados a partir del **código fuente real** y del inventario documen
 
 También puedes importarlos en Lucidchart, Visual Paradigm (import draw.io) o exportarlos a PNG/PDF/SVG desde diagrams.net.
 
-## Contenido
+## Diagrama oficial único (evaluar solo este)
 
-| Archivo | Qué muestra | Uso recomendado |
-|---------|-------------|-----------------|
-| `01_UML_AS-IS_General.drawio` | Vista de paquetes/capas de todo el sistema (Bib_Hacienda + p_mvcHacienda) | Diagrama **grande / general** del AS-IS |
-| `02_UML_AS-IS_Dominio.drawio` | Modelo de dominio completo: Hacienda, Potrero, Res/Ternero/Cebon/Novillo, Vacuna/Bacteriana/Viva, Venta, Usuario, interfaces de dominio, multiplicidades | Diagrama **principal de clases** |
-| `03_UML_AS-IS_Validacion_Eventos_AOP.drawio` | Jerarquía de validación, interceptores Castle, publishers de eventos y reglas estáticas | Complemento (aspectos transversales) |
-| `04_UML_AS-IS_MVC_Servicios.drawio` | Controllers, Services, Composition Root (Program.cs), dependencia a archivos Datos/ | Complemento (capa de aplicación) |
+| Archivo | Qué muestra | Uso |
+|---------|-------------|-----|
+| `UML_AS-IS_Dominio_Unico.drawio` + `UML_AS-IS_Dominio_Unico.md` | **Único diagrama oficial**: solo biblioteca `Bib_Hacienda` (Hacienda, Potrero, Res x3, Vacuna x2, Venta, Usuario, Reglas, Services en biblioteca). Sin front/infra. Asociaciones sin rombos. | Defensa y evaluación |
+| `02_UML_AS-IS_Dominio.drawio` | Base fiel de la que deriva el único (conservar como respaldo) | Respaldo |
+
+## Anexos históricos (no evaluar, generados con IA)
+
+| Archivo | Estado |
+|---------|--------|
+| `01_UML_AS-IS_General.drawio` | Anexo: no es UML de clases, no evaluar |
+| `03_UML_AS-IS_Validacion_Eventos_AOP.drawio` | Anexo: detalle transversal resumido en 1 línea del único |
+| `04_UML_AS-IS_MVC_Servicios.drawio` | Anexo: front fuera de alcance (clase pedía solo biblioteca); Services pertenecen a biblioteca |
+| `Diagrama_Dependencias_AS-IS.drawio` | Anexo |
 
 ## Criterios de fidelidad (rúbrica)
 
 - Refleja lo que **está escrito** en el código, no un diseño idealizado.
 - Generalizaciones: `Res ← Ternero|Cebon|Novillo`, `Vacuna ← Bacteriana|Viva`, `Validacion ← Validador*`.
 - Realizaciones: `Hacienda` implementa `IVacunacion`, `IVentaRes`, `ICreacionVacuna`; `Autenticacion` implementa `IAutenticacion`; validadores implementan `IValidarInformacion`.
-- Composiciones: `Hacienda` posee listas de Potrero, Venta, Vacuna; `Potrero` posee lista de Res; `Res` posee lista de vacunas aplicadas.
+- Asociaciones (corrección: sin rombos de composición/agregación por falta de evidencia de ciclo de vida): `Hacienda`→Potrero/Venta/Vacuna; `Potrero`→Res; `Res`→vacunas aplicadas.
 - Multiplicidad de reses por potrero acotada por `ReglaPotrero.max_reses_potrero = 150`.
 - Dependencias de servicios hacia `Hacienda` y `PersistenciaService` son referencias concretas (punto de dolor para DIP).
 

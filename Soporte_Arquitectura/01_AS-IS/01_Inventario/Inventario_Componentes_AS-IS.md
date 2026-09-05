@@ -1,8 +1,8 @@
-# Inventario de Componentes AS-IS
+# Inventario de Componentes AS-IS — ANEXO (no parte de la defensa; alcance oficial = biblioteca, ver Inventario_Clases + UML único)
 
-**Proyecto:** Sistema de Gestión de Hacienda  
-**Versión:** AS-IS 1.0  
-**Fecha:** 07/08/2026
+**Proyecto:** Sistema de Gestión de Hacienda
+**Versión:** AS-IS 1.1 (corrección: este archivo queda como anexo histórico generado con IA; la evaluación usa el diagrama único de biblioteca)
+**Fecha:** 07/08/2026 (rev. 09/2026: aporte propio — Services pertenecen a biblioteca §5, front §4 fuera de alcance)
 
 ---
 
