@@ -1,2 +1,3 @@
 Potrero_Cebones|2025-11-06|Estrella|292|40|Cebon|2500000
 Potrero_Terneros|2025-11-06|Majo|65|10|Ternero|800000
+PROD|Potrero_Cebones|2026-09-05|Cuero Crudo|Piel|80|Unidades|11984000

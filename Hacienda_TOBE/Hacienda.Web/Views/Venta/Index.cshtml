@@ -6,19 +6,37 @@
     <span class="stat-pill">@ViewBag.TotalVentas registros</span>
     <span class="stat-pill ms-1">@string.Format("{0:C0}", ViewBag.MontoTotal)</span>
   </div>
-  <a class="btn btn-success" asp-action="Create">Registrar venta</a>
+  <div>
+    <a class="btn btn-success me-2" asp-action="Create">Vender res</a>
+    <a class="btn btn-primary" asp-action="CreateProducto">Vender producto</a>
+  </div>
 </div>
 <div class="aw-card table-responsive">
 <table class="table table-hover mb-0">
-  <thead class="table-light"><tr><th>Fecha</th><th>Potrero</th><th>Res</th><th>Tipo</th><th>Peso</th><th>Monto</th></tr></thead>
+  <thead class="table-light">
+    <tr>
+      <th>Fecha</th>
+      <th>Potrero</th>
+      <th>Tipo venta</th>
+      <th>Detalle</th>
+      <th>Cantidad / Peso</th>
+      <th>Monto</th>
+    </tr>
+  </thead>
   <tbody>
   @foreach (var v in Model.OrderByDescending(x => x.Fecha)) {
     <tr>
       <td>@v.Fecha.ToString("yyyy-MM-dd")</td>
       <td>@v.PotreroId</td>
-      <td class="fw-semibold">@v.NombreRes</td>
-      <td>@v.TipoRes</td>
-      <td>@v.PesoRes kg</td>
+      @if (v.EsVentaDeProducto) {
+        <td><span class="badge bg-info">Producto</span></td>
+        <td class="fw-semibold">@v.NombreProducto (@v.TipoProducto)</td>
+        <td>@v.Cantidad @v.Unidad</td>
+      } else {
+        <td><span class="badge bg-secondary">Res</span></td>
+        <td class="fw-semibold">@v.NombreRes (@v.TipoRes)</td>
+        <td>@v.PesoRes kg</td>
+      }
       <td>@v.Monto.ToString("C0")</td>
     </tr>
   }

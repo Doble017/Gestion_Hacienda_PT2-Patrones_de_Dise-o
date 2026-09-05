@@ -9,7 +9,8 @@ public class PotreroTests
     [Fact]
     public void AnadirRes_CreaLaResCorrectaSegunTipoDePotrero()
     {
-        var potrero = new Potrero("P1", TipoPotrero.Cebon);
+        var factory = new CebonFactory();
+        var potrero = new Potrero("P1", TipoPotrero.Cebon, factory);
 
         var mensaje = potrero.AnadirRes("Cebón 1", 18, 300);
 
@@ -30,6 +31,6 @@ public class PotreroTests
 
     private sealed class StubResFactory : IResFactory
     {
-        public Res CreateRes(string nombre, uint peso, ushort edad, TipoPotrero tipo) => new Novillo(nombre, peso, edad);
+        public Res Create(string nombre, uint peso, ushort edad) => new Novillo(nombre, peso, edad);
     }
 }

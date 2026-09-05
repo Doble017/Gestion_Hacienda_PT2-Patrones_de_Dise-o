@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\Hacienda.Web.props" />
-</Project>

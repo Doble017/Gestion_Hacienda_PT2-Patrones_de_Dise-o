@@ -1,6 +1,7 @@
 using Hacienda.Application.Abstractions;
 using Hacienda.Domain.Entities;
 using Hacienda.Domain.Events;
+using Hacienda.Domain.Factories;
 using Hacienda.Domain.Ports;
 using Hacienda.Domain.Rules;
 
@@ -10,11 +11,16 @@ public class PotreroAppService : IPotreroAppService
 {
     private readonly IPotreroRepository _potreros;
     private readonly IEventPublisher _events;
+    private readonly IResFactoryProvider _resFactoryProvider;
 
-    public PotreroAppService(IPotreroRepository potreros, IEventPublisher events)
+    public PotreroAppService(
+        IPotreroRepository potreros,
+        IEventPublisher events,
+        IResFactoryProvider resFactoryProvider)
     {
         _potreros = potreros;
         _events = events;
+        _resFactoryProvider = resFactoryProvider;
     }
 
     public async Task<string> CrearPotreroAsync(string identificacion, TipoPotrero tipo, CancellationToken ct = default)
@@ -23,7 +29,10 @@ public class PotreroAppService : IPotreroAppService
         if (existentes.Any(p => p.Identificacion.Equals(identificacion, StringComparison.OrdinalIgnoreCase)))
             throw new InvalidOperationException($"Ya existe el potrero '{identificacion}'.");
 
-        var potrero = new Potrero(identificacion, tipo);
+        // El Provider entrega la fábrica concreta según el tipo de potrero
+        var factory = _resFactoryProvider.ObtenerFactory(tipo);
+        var potrero = new Potrero(identificacion, tipo, factory);
+
         await _potreros.SaveAsync(potrero, ct);
         return $"Potrero '{identificacion}' creado ({tipo}).";
     }

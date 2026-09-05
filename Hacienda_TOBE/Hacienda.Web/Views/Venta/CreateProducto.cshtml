@@ -1,0 +1,62 @@
+@{
+  ViewData["Title"] = "Registrar venta de producto";
+  var potreros = ViewBag.Potreros as IReadOnlyList<Hacienda.Domain.Entities.Potrero>;
+}
+<h2 class="fw-bold mb-3">Registrar venta de producto derivado</h2>
+<div class="aw-card p-4" style="max-width:560px">
+<form method="post" asp-action="CreateProducto">
+  @Html.AntiForgeryToken()
+
+  <div class="mb-3">
+    <label class="form-label">Potrero (contexto)</label>
+    <select name="potreroId" class="form-select" required>
+      <option value="">— seleccionar —</option>
+      @if (potreros != null) {
+        foreach (var p in potreros) {
+          <option value="@p.Identificacion">@p.Identificacion (@p.Tipo)</option>
+        }
+      }
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Tipo de producto</label>
+    <select name="tipoProducto" class="form-select" required>
+      <option value="">— seleccionar —</option>
+      <option value="Carne">Carne</option>
+      <option value="Piel">Piel</option>
+      <option value="Lacteo">Lácteo</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Nombre del producto</label>
+    <input type="text" name="nombreProducto" class="form-control" required placeholder="Ej: Lomo, Cuero crudo, Leche..." />
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <label class="form-label">Cantidad</label>
+      <input type="number" name="cantidad" class="form-control" step="0.01" min="0.01" required />
+    </div>
+    <div class="col">
+      <label class="form-label">Unidad</label>
+      <input type="text" name="unidad" class="form-control" required placeholder="kg, litros, unidades..." />
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Precio unitario</label>
+    <input type="number" name="precioUnitario" class="form-control" step="100" min="0" required />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Atributo específico (opcional)</label>
+    <input type="text" name="atributoEspecifico" class="form-control" placeholder="Corte / Calidad / Variedad" />
+    <div class="form-text">Carne → Corte · Piel → Calidad · Lácteo → Variedad</div>
+  </div>
+
+  <button type="submit" class="btn btn-warning">Confirmar venta de producto</button>
+  <a asp-action="Index" class="btn btn-link">Cancelar</a>
+</form>
+</div>

@@ -12,10 +12,9 @@ public class Potrero
     public IReadOnlyList<Res> Reses => _reses.AsReadOnly();
     private readonly IResFactory _resFactory;
 
-    public Potrero(string identificacion, TipoPotrero tipo) : this(identificacion, tipo, new DefaultResFactory())
-    {
-    }
-
+    /// <summary>
+    /// Constructor principal: el llamador debe inyectar la fábrica correcta para el tipo de potrero.
+    /// </summary>
     public Potrero(string identificacion, TipoPotrero tipo, IResFactory resFactory)
     {
         if (string.IsNullOrWhiteSpace(identificacion))
@@ -33,7 +32,8 @@ public class Potrero
         if (_reses.Any(r => r.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase)))
             throw new InvalidOperationException($"Ya existe una res '{nombre}' en el potrero '{Identificacion}'.");
 
-        var res = _resFactory.CreateRes(nombre, peso, edad, Tipo);
+        // La fábrica ya sabe qué tipo de Res crear (no se pasa Tipo)
+        var res = _resFactory.Create(nombre, peso, edad);
         _reses.Add(res);
         return $"Res '{nombre}' añadida al potrero '{Identificacion}'.";
     }

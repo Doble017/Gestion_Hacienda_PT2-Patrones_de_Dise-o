@@ -1,18 +1,24 @@
 using Hacienda.Domain.Entities;
 using Hacienda.Domain.Ports;
+using Hacienda.Domain.Factories;
 
 namespace Hacienda.Infrastructure.Persistence;
 
-/// <summary>Adaptador de persistencia en archivos planos (ADR-02).</summary>
+/// Adaptador de persistencia en archivos planos (ADR-02).
 public class FilePotreroRepository : IPotreroRepository
 {
     private readonly FileStoragePaths _paths;
+    private readonly IResFactoryProvider _resFactoryProvider;
     private readonly object _lock = new();
     private List<Potrero>? _cache;
 
-    public FilePotreroRepository(FileStoragePaths paths) => _paths = paths;
+    public FilePotreroRepository(FileStoragePaths paths, IResFactoryProvider resFactoryProvider)
+    {
+        _paths = paths;
+        _resFactoryProvider = resFactoryProvider;
+    }
 
-    public async Task<IReadOnlyList<Potrero>> GetAllAsync(CancellationToken ct = default)
+        public async Task<IReadOnlyList<Potrero>> GetAllAsync(CancellationToken ct = default)
     {
         await EnsureLoadedAsync(ct);
         return _cache!.AsReadOnly();
@@ -69,7 +75,8 @@ public class FilePotreroRepository : IPotreroRepository
                 var parts = line.Split('|');
                 if (parts.Length < 2) continue;
                 var tipo = ParseTipo(parts[1]);
-                potreros[parts[0]] = new Potrero(parts[0], tipo);
+                var factory = _resFactoryProvider.ObtenerFactory(tipo);
+                potreros[parts[0]] = new Potrero(parts[0], tipo, factory);
             }
         }
 

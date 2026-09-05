@@ -31,7 +31,22 @@ public interface IVacunacionAppService
 public interface IVentaAppService
 {
     Task<string> VenderResAsync(string potreroId, string nombreRes, decimal monto, CancellationToken ct = default);
+
+    /// <summary>
+    /// Vende un producto derivado (carne, piel o lácteo) usando el Factory Method.
+    /// </summary>
+    Task<string> VenderProductoAsync(
+        string potreroId,
+        string tipoProducto,
+        string nombreProducto,
+        decimal cantidad,
+        string unidad,
+        decimal precioUnitario,
+        string? atributoEspecifico = null,
+        CancellationToken ct = default);
+
     Task<IReadOnlyList<Venta>> ListarAsync(CancellationToken ct = default);
+
 }
 
 public interface IUsuarioAppService
