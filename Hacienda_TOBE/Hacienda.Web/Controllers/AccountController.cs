@@ -9,9 +9,9 @@ namespace Hacienda.Web.Controllers;
 
 public class AccountController : Controller
 {
-    private readonly IUsuarioAppService _usuarios;
+    private readonly IHaciendaFachada _hacienda;
 
-    public AccountController(IUsuarioAppService usuarios) => _usuarios = usuarios;
+    public AccountController(IHaciendaFachada hacienda) => _hacienda = hacienda;
 
     [HttpGet]
     public IActionResult Login(string? returnUrl = null)
@@ -24,7 +24,7 @@ public class AccountController : Controller
     public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl = null)
     {
         if (!ModelState.IsValid) return View(model);
-        if (await _usuarios.AutenticarAsync(model.Username, model.Password))
+        if (await _hacienda.AutenticarUsuarioAsync(model.Username, model.Password))
         {
             var claims = new List<Claim> { new Claim(ClaimTypes.Name, model.Username) };
             await HttpContext.SignInAsync(

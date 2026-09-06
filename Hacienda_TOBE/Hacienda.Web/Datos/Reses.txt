@@ -1,3 +1,4 @@
+Potrero_Terneros|Lou|95|11|Ternero
 Potrero_Cebones|Rayo|287|14|Cebon
 Potrero_Cebones|Luna|301|27|Cebon
 Potrero_Cebones|Trueno|333|45|Cebon

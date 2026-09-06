@@ -11,6 +11,12 @@
     <a class="btn btn-primary" asp-action="CreateProducto">Vender producto</a>
   </div>
 </div>
+
+<div class="alert alert-secondary py-2 small mb-3">
+  Los valores de la columna <strong>Total cobrado</strong> ya incluyen, cuando aplica,
+  descuentos e impuestos según la <strong>forma de cobro</strong> elegida al registrar cada venta.
+</div>
+
 <div class="aw-card table-responsive">
 <table class="table table-hover mb-0">
   <thead class="table-light">
@@ -20,7 +26,7 @@
       <th>Tipo venta</th>
       <th>Detalle</th>
       <th>Cantidad / Peso</th>
-      <th>Monto</th>
+      <th>Total cobrado</th>
     </tr>
   </thead>
   <tbody>

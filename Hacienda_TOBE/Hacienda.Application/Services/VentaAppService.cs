@@ -2,6 +2,7 @@ using Hacienda.Application.Abstractions;
 using Hacienda.Domain.Entities;
 using Hacienda.Domain.Factories;
 using Hacienda.Domain.Ports;
+using Hacienda.Domain.Strategies;
 
 namespace Hacienda.Application.Services;
 
@@ -10,18 +11,26 @@ public class VentaAppService : IVentaAppService
     private readonly IPotreroRepository _potreros;
     private readonly IVentaRepository _ventas;
     private readonly IProductoFactoryProvider _productoFactoryProvider;
+    private readonly ICalculadoraProvider _calculadoras;
 
     public VentaAppService(
         IPotreroRepository potreros,
         IVentaRepository ventas,
-        IProductoFactoryProvider productoFactoryProvider)
+        IProductoFactoryProvider productoFactoryProvider,
+        ICalculadoraProvider calculadoras)
     {
         _potreros = potreros;
         _ventas = ventas;
         _productoFactoryProvider = productoFactoryProvider;
+        _calculadoras = calculadoras;
     }
 
-    public async Task<string> VenderResAsync(string potreroId, string nombreRes, decimal monto, CancellationToken ct = default)
+    public async Task<string> VenderResAsync(
+        string potreroId,
+        string nombreRes,
+        decimal monto,
+        string? estrategiaCobro = null,
+        CancellationToken ct = default)
     {
         var potrero = await _potreros.GetByIdAsync(potreroId, ct)
             ?? throw new InvalidOperationException($"Potrero '{potreroId}' no encontrado.");
@@ -36,13 +45,18 @@ public class VentaAppService : IVentaAppService
             _ => "Res"
         };
 
-        var venta = new Venta(potreroId, DateTime.Today, res.Nombre, res.Peso, res.Edad, tipo, monto);
+        var nombreEstrategia = string.IsNullOrWhiteSpace(estrategiaCobro) ? "Nacional" : estrategiaCobro;
+        var calculadora = _calculadoras.Obtener(nombreEstrategia);
+        var cobro = calculadora.Calcular(monto);
+
+        var venta = new Venta(potreroId, DateTime.Today, res.Nombre, res.Peso, res.Edad, tipo, cobro.Total);
         if (!potrero.RemoverRes(nombreRes))
             throw new InvalidOperationException("No se pudo remover la res del potrero.");
 
         await _potreros.SaveAsync(potrero, ct);
         await _ventas.AddAsync(venta, ct);
-        return $"Res '{nombreRes}' vendida por {monto:C}.";
+
+        return $"Res '{nombreRes}' vendida. {cobro}";
     }
 
     public async Task<string> VenderProductoAsync(
@@ -53,28 +67,26 @@ public class VentaAppService : IVentaAppService
         string unidad,
         decimal precioUnitario,
         string? atributoEspecifico = null,
+        string? estrategiaCobro = null,
         CancellationToken ct = default)
     {
-        // Validamos que el potrero exista (contexto de la hacienda)
         var potrero = await _potreros.GetByIdAsync(potreroId, ct)
             ?? throw new InvalidOperationException($"Potrero '{potreroId}' no encontrado.");
 
-        // 1. Obtener la fábrica concreta según el tipo (Factory Method + Provider)
         var factory = _productoFactoryProvider.ObtenerFactory(tipoProducto);
-
-        // 2. Crear el producto
         var producto = factory.Crear(nombreProducto, cantidad, unidad, precioUnitario, atributoEspecifico);
 
-        // 3. Calcular monto
-        var monto = producto.CalcularMonto();
+        var subtotal = producto.CalcularMonto();
+        var nombreEstrategia = string.IsNullOrWhiteSpace(estrategiaCobro) ? "Nacional" : estrategiaCobro;
+        var calculadora = _calculadoras.Obtener(nombreEstrategia);
+        var cobro = calculadora.Calcular(subtotal);
 
-        // 4. Registrar la venta de producto
-        var venta = new Venta(potreroId, DateTime.Today, producto, monto);
+        var venta = new Venta(potreroId, DateTime.Today, producto, cobro.Total);
         await _ventas.AddAsync(venta, ct);
 
-        return $"Producto '{producto.Nombre}' ({producto.Tipo}) vendido: {producto.Cantidad} {producto.Unidad} por {monto:C}.";
+        return $"Producto '{producto.Nombre}' ({producto.Tipo}) vendido: {producto.Cantidad} {producto.Unidad}. {cobro}";
     }
 
     public Task<IReadOnlyList<Venta>> ListarAsync(CancellationToken ct = default) =>
         _ventas.GetAllAsync(ct);
-} 
+}

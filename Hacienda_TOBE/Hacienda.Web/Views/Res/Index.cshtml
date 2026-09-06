@@ -100,8 +100,21 @@
         <input type="hidden" name="potreroId" id="venPotrero" />
         <input type="hidden" name="nombre" id="venNombre" />
         <p>Res: <strong id="venLabel"></strong></p>
-        <label class="form-label">Monto de venta</label>
+        <div class="alert alert-info py-2 small">
+          El valor es el <strong>subtotal</strong>. La Strategy de cobro aplicará descuento e/o IVA y el mensaje mostrará el desglose.
+        </div>
+        <label class="form-label">Subtotal (antes de descuentos e impuestos)</label>
         <input type="number" name="monto" class="form-control" step="1000" min="1" required />
+          <div class="mb-3">
+    <label class="form-label">Forma de cobro</label>
+    <select name="estrategiaCobro" class="form-select" required>
+      <option value="Nacional">Nacional (IVA 19 %)</option>
+      <option value="SinDescuento">Sin descuento ni impuestos</option>
+      <option value="ConDescuento">Con descuento (10 %)</option>
+      <option value="Internacional">Internacional / exportación (sin IVA)</option>
+    </select>
+    <div class="form-text">Elige cómo se calculará el total a partir del subtotal.</div>
+  </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -110,7 +123,6 @@
     </form>
   </div></div>
 </div>
-
 
 <!-- Modal Chip GPS SC-2 -->
 <div class="modal fade" id="chipModal" tabindex="-1">

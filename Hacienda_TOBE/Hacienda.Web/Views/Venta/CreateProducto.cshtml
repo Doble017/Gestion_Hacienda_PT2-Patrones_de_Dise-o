@@ -3,6 +3,13 @@
   var potreros = ViewBag.Potreros as IReadOnlyList<Hacienda.Domain.Entities.Potrero>;
 }
 <h2 class="fw-bold mb-3">Registrar venta de producto derivado</h2>
+
+<div class="alert alert-info py-2" style="max-width:560px">
+  <strong>Calculadora de cobro (Strategy):</strong>
+  el subtotal se obtiene de <code>cantidad × precio unitario</code>.
+  Luego se aplican descuentos e impuestos según la estrategia activa.
+</div>
+
 <div class="aw-card p-4" style="max-width:560px">
 <form method="post" asp-action="CreateProducto">
   @Html.AntiForgeryToken()
@@ -46,14 +53,26 @@
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Precio unitario</label>
+    <label class="form-label">Precio unitario (base del subtotal)</label>
     <input type="number" name="precioUnitario" class="form-control" step="100" min="0" required />
+    <div class="form-text">Subtotal = cantidad × precio. El total final lo calcula la Strategy (descuento / IVA).</div>
   </div>
 
   <div class="mb-3">
     <label class="form-label">Atributo específico (opcional)</label>
     <input type="text" name="atributoEspecifico" class="form-control" placeholder="Corte / Calidad / Variedad" />
     <div class="form-text">Carne → Corte · Piel → Calidad · Lácteo → Variedad</div>
+  </div>
+
+    <div class="mb-3">
+    <label class="form-label">Forma de cobro</label>
+    <select name="estrategiaCobro" class="form-select" required>
+      <option value="Nacional">Nacional (IVA 19 %)</option>
+      <option value="SinDescuento">Sin descuento ni impuestos</option>
+      <option value="ConDescuento">Con descuento (10 %)</option>
+      <option value="Internacional">Internacional / exportación (sin IVA)</option>
+    </select>
+    <div class="form-text">Elige cómo se calculará el total a partir del subtotal.</div>
   </div>
 
   <button type="submit" class="btn btn-warning">Confirmar venta de producto</button>

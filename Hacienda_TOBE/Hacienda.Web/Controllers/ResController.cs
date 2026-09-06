@@ -8,20 +8,13 @@ namespace Hacienda.Web.Controllers;
 [Authorize]
 public class ResController : Controller
 {
-    private readonly IResAppService _res;
-    private readonly IPotreroAppService _potreros;
-    private readonly IVentaAppService _ventas;
+    private readonly IHaciendaFachada _hacienda;
 
-    public ResController(IResAppService res, IPotreroAppService potreros, IVentaAppService ventas)
-    {
-        _res = res;
-        _potreros = potreros;
-        _ventas = ventas;
-    }
+    public ResController(IHaciendaFachada hacienda) => _hacienda = hacienda;
 
     public async Task<IActionResult> Index()
     {
-        var list = await _res.ListarTodasAsync();
+        var list = await _hacienda.ListarResesAsync();
         ViewBag.TotalReses = list.Count;
         ViewBag.TotalPeso = list.Sum(x => (long)x.Res.Peso);
         return View(list);
@@ -30,7 +23,7 @@ public class ResController : Controller
     [HttpGet]
     public async Task<IActionResult> Create()
     {
-        ViewBag.Potreros = await _potreros.ListarAsync();
+        ViewBag.Potreros = await _hacienda.ListarPotrerosAsync();
         return View();
     }
 
@@ -40,20 +33,20 @@ public class ResController : Controller
     {
         try
         {
-            TempData["Msg"] = await _potreros.AgregarResAsync(potreroId, nombre, edad, peso);
+            TempData["Msg"] = await _hacienda.AgregarResAsync(potreroId, nombre, edad, peso);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
             TempData["Err"] = ex.Message;
-            ViewBag.Potreros = await _potreros.ListarAsync();
+            ViewBag.Potreros = await _hacienda.ListarPotrerosAsync();
             return View();
         }
     }
 
     public async Task<IActionResult> DetalleVacunas(string potreroId, string nombre)
     {
-        var res = await _res.BuscarAsync(potreroId, nombre);
+        var res = await _hacienda.BuscarResAsync(potreroId, nombre);
         if (res is null) return NotFound();
         ViewBag.PotreroId = potreroId;
         return View(res);
@@ -66,19 +59,19 @@ public class ResController : Controller
         try
         {
             if (incremento == 0) incremento = 10;
-            TempData["Msg"] = await _res.AlimentarAsync(potreroId, nombre, incremento);
+            TempData["Msg"] = await _hacienda.AlimentarResAsync(potreroId, nombre, incremento);
         }
         catch (Exception ex) { TempData["Err"] = ex.Message; }
         return RedirectToAction(nameof(Index));
     }
 
-    [HttpPost]
+        [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Vender(string potreroId, string nombre, decimal monto)
+    public async Task<IActionResult> Vender(string potreroId, string nombre, decimal monto, string? estrategiaCobro)
     {
         try
         {
-            TempData["Msg"] = await _ventas.VenderResAsync(potreroId, nombre, monto);
+            TempData["Msg"] = await _hacienda.VenderResAsync(potreroId, nombre, monto, estrategiaCobro);
         }
         catch (Exception ex) { TempData["Err"] = ex.Message; }
         return RedirectToAction(nameof(Index));
@@ -90,10 +83,10 @@ public class ResController : Controller
     {
         try
         {
-            var est = Enum.IsDefined(typeof(Hacienda.Domain.Entities.EstadoChip), estado)
-                ? (Hacienda.Domain.Entities.EstadoChip)estado
-                : Hacienda.Domain.Entities.EstadoChip.Activo;
-            TempData["Msg"] = await _res.AsignarChipAsync(potreroId, nombre, chipId, est, lat, lon);
+            var est = Enum.IsDefined(typeof(EstadoChip), estado)
+                ? (EstadoChip)estado
+                : EstadoChip.Activo;
+            TempData["Msg"] = await _hacienda.AsignarChipAsync(potreroId, nombre, chipId, est, lat, lon);
         }
         catch (Exception ex) { TempData["Err"] = ex.Message; }
         return RedirectToAction(nameof(Index));
@@ -103,7 +96,7 @@ public class ResController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> QuitarChip(string potreroId, string nombre)
     {
-        try { TempData["Msg"] = await _res.QuitarChipAsync(potreroId, nombre); }
+        try { TempData["Msg"] = await _hacienda.QuitarChipAsync(potreroId, nombre); }
         catch (Exception ex) { TempData["Err"] = ex.Message; }
         return RedirectToAction(nameof(Index));
     }

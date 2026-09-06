@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hacienda.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d71c0f3b2572322844882b27683c5037addf9c60")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+26ae094d41f760f3f7ceabc45b4a43ac671cb313")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hacienda.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hacienda.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

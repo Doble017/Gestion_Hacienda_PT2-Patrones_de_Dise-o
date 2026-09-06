@@ -73,11 +73,8 @@ C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_
 C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\Hacienda.Web.pdb
 C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\Hacienda.Web.genruntimeconfig.cache
 C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\ref\Hacienda.Web.dll
-C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\bin\Debug\net8.0\Hacienda.Web.staticwebassets.endpoints.json
-C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\rpswa.dswa.cache.json
-C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\rjimswa.dswa.cache.json
-C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
-C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
-C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\staticwebassets.build.json.cache
-C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\swae.build.ex.cache
+C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\staticwebassets\msbuild.Hacienda.Web.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\staticwebassets\msbuild.build.Hacienda.Web.props
+C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Hacienda.Web.props
+C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Hacienda.Web.props
+C:\Users\hiler\Desktop\ProyectosUniversitarios\ArquitecturaDeSoftware\Propuesta_HaciendaCorregida-SOLID-\Hacienda_TOBE\Hacienda.Web\obj\Debug\net8.0\staticwebassets.pack.json

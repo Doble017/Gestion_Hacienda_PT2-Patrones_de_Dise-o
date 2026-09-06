@@ -8,20 +8,13 @@ namespace Hacienda.Web.Controllers;
 [Authorize]
 public class VacunaController : Controller
 {
-    private readonly IVacunacionAppService _vacunas;
-    private readonly IPotreroAppService _potreros;
-    private readonly IResAppService _reses;
+    private readonly IHaciendaFachada _hacienda;
 
-    public VacunaController(IVacunacionAppService vacunas, IPotreroAppService potreros, IResAppService reses)
-    {
-        _vacunas = vacunas;
-        _potreros = potreros;
-        _reses = reses;
-    }
+    public VacunaController(IHaciendaFachada hacienda) => _hacienda = hacienda;
 
     public async Task<IActionResult> Index()
     {
-        var list = await _vacunas.ListarDisponiblesAsync();
+        var list = await _hacienda.ListarVacunasDisponiblesAsync();
         return View(list);
     }
 
@@ -30,13 +23,20 @@ public class VacunaController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(string tipo, string nombre, string lote, DateTime fechaVencimiento, DateTime fechaAplicacion, uint? periodo, int? grado)
+    public async Task<IActionResult> Create(
+        string tipo,
+        string nombre,
+        string lote,
+        DateTime fechaVencimiento,
+        DateTime fechaAplicacion,
+        uint? periodo,
+        int? grado)
     {
         try
         {
             if (string.Equals(tipo, "Bacteriana", StringComparison.OrdinalIgnoreCase))
             {
-                TempData["Msg"] = await _vacunas.CrearVacunaBacterianaAsync(
+                TempData["Msg"] = await _hacienda.CrearVacunaBacterianaAsync(
                     nombre, lote, fechaVencimiento, fechaAplicacion, periodo ?? 2);
             }
             else
@@ -44,7 +44,7 @@ public class VacunaController : Controller
                 var g = grado.HasValue && Enum.IsDefined(typeof(GradoAtenuacion), grado.Value)
                     ? (GradoAtenuacion)grado.Value
                     : GradoAtenuacion.Media;
-                TempData["Msg"] = await _vacunas.CrearVacunaVivaAsync(
+                TempData["Msg"] = await _hacienda.CrearVacunaVivaAsync(
                     nombre, lote, fechaVencimiento, fechaAplicacion, g);
             }
             return RedirectToAction(nameof(Index));
@@ -59,9 +59,9 @@ public class VacunaController : Controller
     [HttpGet]
     public async Task<IActionResult> Aplicar()
     {
-        ViewBag.Potreros = await _potreros.ListarAsync();
-        ViewBag.Vacunas = await _vacunas.ListarDisponiblesAsync();
-        ViewBag.Reses = await _reses.ListarTodasAsync();
+        ViewBag.Potreros = await _hacienda.ListarPotrerosAsync();
+        ViewBag.Vacunas = await _hacienda.ListarVacunasDisponiblesAsync();
+        ViewBag.Reses = await _hacienda.ListarResesAsync();
         return View();
     }
 
@@ -71,15 +71,15 @@ public class VacunaController : Controller
     {
         try
         {
-            TempData["Msg"] = await _vacunas.AplicarVacunaAsync(potreroId, nombreRes, lote);
+            TempData["Msg"] = await _hacienda.AplicarVacunaAsync(potreroId, nombreRes, lote);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
             TempData["Err"] = ex.Message;
-            ViewBag.Potreros = await _potreros.ListarAsync();
-            ViewBag.Vacunas = await _vacunas.ListarDisponiblesAsync();
-            ViewBag.Reses = await _reses.ListarTodasAsync();
+            ViewBag.Potreros = await _hacienda.ListarPotrerosAsync();
+            ViewBag.Vacunas = await _hacienda.ListarVacunasDisponiblesAsync();
+            ViewBag.Reses = await _hacienda.ListarResesAsync();
             return View();
         }
     }

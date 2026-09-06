@@ -8,6 +8,5 @@ public interface IResFactory
 {
     
     /// Crea una res del tipo que esta fábrica sabe construir.
-    /// Ya no recibe TipoPotrero: cada fábrica concreta conoce su tipo.
     Res Create(string nombre, uint peso, ushort edad);
 }

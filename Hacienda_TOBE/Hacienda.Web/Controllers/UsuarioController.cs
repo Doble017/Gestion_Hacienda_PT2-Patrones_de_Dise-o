@@ -7,13 +7,13 @@ namespace Hacienda.Web.Controllers;
 [Authorize]
 public class UsuarioController : Controller
 {
-    private readonly IUsuarioAppService _usuarios;
+    private readonly IHaciendaFachada _hacienda;
 
-    public UsuarioController(IUsuarioAppService usuarios) => _usuarios = usuarios;
+    public UsuarioController(IHaciendaFachada hacienda) => _hacienda = hacienda;
 
     public async Task<IActionResult> Index()
     {
-        var list = await _usuarios.ListarAsync();
+        var list = await _hacienda.ListarUsuariosAsync();
         return View(list);
     }
 
@@ -26,7 +26,7 @@ public class UsuarioController : Controller
     {
         try
         {
-            TempData["Msg"] = await _usuarios.CrearAsync(nombre, contrasena);
+            TempData["Msg"] = await _hacienda.CrearUsuarioAsync(nombre, contrasena);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)

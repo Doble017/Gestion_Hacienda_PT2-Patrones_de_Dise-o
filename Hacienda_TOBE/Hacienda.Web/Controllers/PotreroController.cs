@@ -8,13 +8,13 @@ namespace Hacienda.Web.Controllers;
 [Authorize]
 public class PotreroController : Controller
 {
-    private readonly IPotreroAppService _service;
+    private readonly IHaciendaFachada _hacienda;
 
-    public PotreroController(IPotreroAppService service) => _service = service;
+    public PotreroController(IHaciendaFachada hacienda) => _hacienda = hacienda;
 
     public async Task<IActionResult> Index()
     {
-        var list = await _service.ListarAsync();
+        var list = await _hacienda.ListarPotrerosAsync();
         ViewBag.TotalPotreros = list.Count;
         ViewBag.TotalReses = list.Sum(p => p.Reses.Count);
         return View(list);
@@ -33,7 +33,7 @@ public class PotreroController : Controller
                 throw new ArgumentException("La identificación es obligatoria.");
             if (!Enum.TryParse<TipoPotrero>(tipo, true, out var t))
                 throw new ArgumentException("Tipo de potrero inválido.");
-            TempData["Msg"] = await _service.CrearPotreroAsync(identificacion, t);
+            TempData["Msg"] = await _hacienda.CrearPotreroAsync(identificacion, t);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
@@ -46,7 +46,7 @@ public class PotreroController : Controller
     public async Task<IActionResult> Details(string id)
     {
         if (string.IsNullOrWhiteSpace(id)) return NotFound();
-        var p = await _service.ObtenerAsync(id);
+        var p = await _hacienda.ObtenerPotreroAsync(id);
         if (p is null) return NotFound();
         return View(p);
     }

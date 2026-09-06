@@ -12,9 +12,8 @@ public class Potrero
     public IReadOnlyList<Res> Reses => _reses.AsReadOnly();
     private readonly IResFactory _resFactory;
 
-    /// <summary>
+    
     /// Constructor principal: el llamador debe inyectar la fábrica correcta para el tipo de potrero.
-    /// </summary>
     public Potrero(string identificacion, TipoPotrero tipo, IResFactory resFactory)
     {
         if (string.IsNullOrWhiteSpace(identificacion))
